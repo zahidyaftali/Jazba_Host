@@ -25,6 +25,7 @@ export const img = {
   work3:      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
   ukOffice:   'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1000&q=80',
   pkOffice:   'https://images.unsplash.com/photo-1590341328520-63256eb32bc3?auto=format&fit=crop&w=1000&q=80',
+  mobileDev:  'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
 }
 
 // The three headline services (each has a detail page).
@@ -90,6 +91,69 @@ export const services = [
       { title: 'Provision', body: 'We register your domain, configure DNS and spin up hardened, SSD-backed hosting.' },
       { title: 'Secure & Optimise', body: 'Free SSL, firewalls, CDN caching and daily backups keep you fast and protected.' },
       { title: 'Monitor 24/7', body: 'Round-the-clock monitoring and a real support team keep you online, guaranteed.' },
+    ],
+  },
+  {
+    slug: 'mobile-app-development',
+    title: 'Mobile App Development',
+    tagline: 'Native & cross-platform apps for iOS and Android.',
+    hero: img.mobileDev,
+    intro:
+      'From idea to the App Store — we build mobile apps that feel native on every device. React Native and Expo for cross-platform speed, or fully native builds where performance demands it, with the backend and integrations to match.',
+    highlights: [
+      'React Native, Expo & Flutter',
+      'Native iOS & Android builds',
+      'Push notifications & offline-first',
+      'AI-powered features & recommendations',
+      'Payments, bookings & in-app purchases',
+      'App Store & Play Store submission',
+    ],
+    deliverables: [
+      { title: 'Strategy & Prototype', body: 'We map user journeys and validate the experience with clickable prototypes before writing code.' },
+      { title: 'Build & Test', body: 'One codebase, both platforms — developed with automated testing and real-device QA at every stage.' },
+      { title: 'Launch & Iterate', body: 'We handle store submission, analytics and updates so your app keeps improving after day one.' },
+    ],
+  },
+  {
+    slug: 'ai-chatbot-development',
+    title: 'AI Chatbot Development',
+    tagline: 'Always-on assistants that capture and convert.',
+    hero: img.aiChat,
+    intro:
+      'Intelligent chatbots trained on your business — answering questions, capturing leads and booking appointments around the clock. On your website, WhatsApp or wherever your customers are.',
+    highlights: [
+      'Custom AI assistants trained on your content',
+      'Lead capture & qualification',
+      'Customer support automation',
+      'Website, WhatsApp & Messenger channels',
+      'CRM & calendar integrations',
+      'Conversation analytics & tuning',
+    ],
+    deliverables: [
+      { title: 'Scope & Train', body: 'We define what your assistant should do and train it on your services, FAQs and tone of voice.' },
+      { title: 'Integrate', body: 'We wire it into your website and channels, connect your CRM and set up smooth human handoff.' },
+      { title: 'Optimise', body: 'We monitor real conversations, close the gaps and keep improving answer quality month on month.' },
+    ],
+  },
+  {
+    slug: 'cms-ecommerce-development',
+    title: 'CMS & eCommerce Development',
+    tagline: "Content and commerce on the world's leading platforms.",
+    hero: img.ecommerce,
+    intro:
+      'Powerful content management and online stores your team can actually run. WordPress, Webflow or headless CMS for content; Shopify, WooCommerce or fully custom checkout for commerce — chosen to fit your business, not the other way round.',
+    highlights: [
+      'WordPress, Webflow & headless CMS',
+      'Shopify & WooCommerce storefronts',
+      'Custom checkout & product configurators',
+      'Payment gateways & subscriptions',
+      'SEO, performance & analytics baked in',
+      'Editor training & documentation',
+    ],
+    deliverables: [
+      { title: 'Platform Fit', body: 'We match your catalogue, content and budget to the right platform — no over-engineering.' },
+      { title: 'Build & Migrate', body: 'Design-faithful themes, clean data migration and payments configured end to end.' },
+      { title: 'Grow', body: 'SEO, speed and conversion tuning plus training so your team ships content and products with confidence.' },
     ],
   },
 ]
@@ -191,7 +255,7 @@ export const homeServices = [
   {
     title: 'Mobile App Development',
     body: 'Native and cross-platform mobile applications that deliver seamless experiences on iOS and Android.',
-    to: '/services',
+    to: '/services/mobile-app-development',
   },
   {
     title: 'Web Hosting',
@@ -201,12 +265,12 @@ export const homeServices = [
   {
     title: 'AI Chatbot Development',
     body: 'Intelligent AI-powered chatbots that automate customer support and streamline business operations.',
-    to: '/services',
+    to: '/services/ai-chatbot-development',
   },
   {
     title: 'CMS & eCommerce Development',
     body: "Powerful content management and online store solutions built on the world's leading platforms.",
-    to: '/services',
+    to: '/services/cms-ecommerce-development',
   },
 ]
 

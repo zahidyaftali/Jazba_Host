@@ -82,7 +82,7 @@ export default function ServiceDetail() {
       <section className="section band-soft">
         <div className="container">
           <SectionHead eyebrow="Keep exploring" title="Other services." />
-          <Reveal variants={stagger} className="grid grid-2">
+          <Reveal variants={stagger} className="grid grid-3">
             {others.map((s) => (
               <motion.div variants={scaleIn} key={s.slug}>
                 <Link to={`/services/${s.slug}`} className="svc-card">

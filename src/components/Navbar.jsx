@@ -7,7 +7,7 @@ import './navbar.css'
 const links = [
   { to: '/', label: 'Home', end: true },
   { to: '/about', label: 'About' },
-  { to: '/services', label: 'Services' },
+  { to: '/services', label: 'Services', mega: true },
   { to: '/pricing', label: 'Hosting Pricing' },
   { to: '/contact', label: 'Contact' },
 ]
@@ -15,10 +15,10 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
+  const [megaOpen, setMegaOpen] = useState(false)
   const location = useLocation()
 
-  useEffect(() => { setOpen(false); setServicesOpen(false) }, [location])
+  useEffect(() => { setOpen(false); setMegaOpen(false) }, [location])
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
     onScroll()
@@ -27,53 +27,43 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header className={`nav ${scrolled ? 'nav-scrolled' : ''}`}>
+    <header className={`nav ${scrolled || megaOpen ? 'nav-scrolled' : ''}`} onMouseLeave={() => setMegaOpen(false)}>
       <div className="container nav-inner">
-        <Link to="/" className="brand" aria-label="Jazba Host home">
+        <Link to="/" className="brand" aria-label="Jazba Host home" onMouseEnter={() => setMegaOpen(false)}>
           <span className="brand-mark">J</span>
           <span className="brand-text">Jazba<span className="brand-accent">Host</span></span>
         </Link>
 
         <nav className="nav-menu" aria-label="Primary">
           {links.map((l) => (
-            l.label === 'Services' ? (
-              <div
+            l.mega ? (
+              <NavLink
                 key={l.to}
-                className="nav-dropdown"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
+                to={l.to}
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''} ${megaOpen ? 'mega-hot' : ''}`}
+                onMouseEnter={() => setMegaOpen(true)}
+                onFocus={() => setMegaOpen(true)}
+                aria-expanded={megaOpen}
+                aria-haspopup="true"
               >
-                <NavLink to={l.to} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-                  {l.label}
-                </NavLink>
-                <AnimatePresence>
-                  {servicesOpen && (
-                    <motion.div
-                      className="dropdown-panel"
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.18 }}
-                    >
-                      {services.map((s) => (
-                        <Link key={s.slug} to={`/services/${s.slug}`} className="dropdown-item">
-                          <span className="dropdown-title">{s.title}</span>
-                          <span className="dropdown-tag">{s.tagline}</span>
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                {l.label} <span className={`nav-caret ${megaOpen ? 'up' : ''}`} aria-hidden>▾</span>
+              </NavLink>
             ) : (
-              <NavLink key={l.to} to={l.to} end={l.end} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={l.end}
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                onMouseEnter={() => setMegaOpen(false)}
+              >
                 {l.label}
               </NavLink>
             )
           ))}
         </nav>
 
-        <div className="nav-cta">
+        <div className="nav-cta" onMouseEnter={() => setMegaOpen(false)}>
+          <a href="tel:+443335777014" className="nav-phone">+44 (0)333 5777 014</a>
           <Link to="/contact" className="btn btn-primary nav-btn">Get a Quote</Link>
         </div>
 
@@ -82,6 +72,43 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* MEGA MENU — full-width panel */}
+      <AnimatePresence>
+        {megaOpen && (
+          <motion.div
+            className="mega-panel"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.18 }}
+          >
+            <div className="container mega-grid">
+              <div className="mega-services">
+                {services.map((s, i) => (
+                  <Link key={s.slug} to={`/services/${s.slug}`} className="mega-item">
+                    <span className="mega-num">{String(i + 1).padStart(2, '0')}</span>
+                    <span>
+                      <span className="mega-title">{s.title}</span>
+                      <span className="mega-tag">{s.tagline}</span>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+              <aside className="mega-aside">
+                <div className="mega-aside-label">Keep it online</div>
+                <div className="title-md">Managed hosting from £3.99/mo.</div>
+                <p className="body-sm" style={{ color: 'var(--muted)' }}>
+                  Free SSL, daily backups and a 99.9% uptime guarantee on every plan.
+                </p>
+                <Link to="/pricing" className="btn btn-dark mega-aside-btn">View Hosting Pricing</Link>
+                <Link to="/services" className="link-cta">All services <span className="chev" aria-hidden>›</span></Link>
+              </aside>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* MOBILE SHEET */}
       <AnimatePresence>
         {open && (
           <motion.div

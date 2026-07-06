@@ -10,6 +10,9 @@ const serviceTags = {
   'web-design': ['branding', 'ux', 'design-systems', 'wcag'],
   'web-development': ['react', 'next.js', 'cms', 'ai'],
   'hosting-and-domain': ['ssl', 'cdn', 'backups', '24/7'],
+  'mobile-app-development': ['react-native', 'expo', 'ios', 'android'],
+  'ai-chatbot-development': ['ai', 'automation', 'whatsapp', 'crm'],
+  'cms-ecommerce-development': ['wordpress', 'shopify', 'woocommerce', 'seo'],
 }
 
 export default function Services() {
