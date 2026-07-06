@@ -1,0 +1,33 @@
+/* Global footer — deep black canvas, off-white text, per the system. */
+.footer { background: var(--surface-deep); color: var(--on-dark-soft); }
+.footer-grid {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: var(--xl);
+  padding-top: 64px; padding-bottom: 48px;
+}
+.footer-brand .brand { margin-bottom: 16px; }
+.footer .brand-mark { background: var(--primary); color: var(--on-primary); }
+.footer .brand-text { color: var(--on-dark); }
+.footer .brand-accent { color: var(--hero-glow); }
+.footer-blurb { color: var(--on-dark-soft); max-width: 320px; }
+
+.footer-heading { font-weight: 600; font-size: 13px; letter-spacing: 1.2px; color: var(--on-dark); margin-bottom: 18px; text-transform: uppercase; }
+.footer-link { font-weight: 400; font-size: 14px; color: var(--on-dark-soft); transition: color .2s ease; }
+.footer-link:hover { color: var(--on-dark); }
+
+.footer-office-country { font-weight: 600; font-size: 14px; color: var(--on-dark); margin-bottom: 4px; }
+.footer-office-addr { color: var(--on-dark-soft); }
+
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding-top: 24px; padding-bottom: 32px; border-top: 1px solid var(--divider-dark);
+  color: var(--on-dark-soft); flex-wrap: wrap;
+}
+.footer-bottom-links { display: inline-flex; align-items: center; gap: 10px; }
+.footer-bottom .dot { color: var(--divider-dark); }
+
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--xl); }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr }
+}

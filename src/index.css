@@ -1,0 +1,236 @@
+/* ============================================================
+   Jazba Host — Design System
+   Replicate-inspired: warm cream canvas, hot-orange stamp accent,
+   heavy grotesque display type at lineHeight 1.0, JetBrains Mono
+   code wells on dark, fully-rounded interactive elements.
+   Substitute families: Bricolage Grotesque (rb-freigeist-neue),
+   Inter (basier-square), JetBrains Mono (direct).
+   ============================================================ */
+
+:root {
+  /* Brand & Accent */
+  --primary: #ea2804;
+  --primary-active: #c01f00;
+  --hero-glow: #ff6a3d;
+  --hero-pink: #f4a8a0;
+  --on-primary: #ffffff;
+
+  /* Surface */
+  --canvas: #f9f7f3;
+  --surface-soft: #f3f0e8;       /* surface-bone */
+  --surface-card: #ffffff;
+  --surface-strong: #e7e2d6;
+  --surface-dark: #202020;
+  --surface-dark-elevated: #2b2b2b;
+  --surface-deep: #000000;
+
+  /* Hairlines */
+  --hairline: rgba(32, 32, 32, 0.12);
+  --hairline-strong: #202020;
+  --divider-dark: rgba(252, 252, 252, 0.16);
+
+  /* Text */
+  --ink: #202020;
+  --body: #3a3a3a;
+  --body-strong: #202020;
+  --muted: #646464;
+  --muted-soft: #8d8d8d;
+  --stone: #bbbbbb;
+  --on-dark: #fcfcfc;
+  --on-dark-soft: rgba(252, 252, 252, 0.72);
+
+  /* Semantic */
+  --success: #2b9a66;
+  --warning: #f59e0b;
+  --error: #dc2626;
+  --ring-focus: rgba(59, 130, 246, 0.5);
+
+  /* Rounding */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-full: 9999px;
+
+  /* Spacing */
+  --xxs: 4px;
+  --xs: 8px;
+  --sm: 12px;
+  --md: 16px;
+  --lg: 24px;
+  --xl: 32px;
+  --xxl: 48px;
+  --section: 96px;
+  --band: 160px;
+
+  /* Layout */
+  --container: 1280px;
+
+  /* Families */
+  --font-display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  font-family: var(--font-body);
+  color: var(--body);
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--canvas);
+  color: var(--body);
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+code, pre, kbd { font-family: var(--font-mono); }
+
+/* ---------- Typography scale ----------
+   Display sizes use the grotesque at lineHeight 1.0 with negative
+   tracking (-3% at the top of the ladder). Body stays Inter 400. */
+.display-xxl { font-family: var(--font-display); font-weight: 700; font-size: clamp(48px, 9vw, 128px); line-height: 1.0; letter-spacing: -0.03em; color: var(--ink); }
+.display-xl  { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 6vw, 72px); line-height: 1.0; letter-spacing: -0.025em; color: var(--ink); }
+.display-lg  { font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.0; letter-spacing: -1px; color: var(--ink); }
+.display-md  { font-family: var(--font-display); font-weight: 600; font-size: 30px; line-height: 1.2; letter-spacing: -0.5px; color: var(--ink); }
+.display-sm  { font-family: var(--font-display); font-weight: 600; font-size: 24px; line-height: 1.25; letter-spacing: -0.4px; color: var(--ink); }
+.title-lg  { font-weight: 600; font-size: 20px; line-height: 1.4; letter-spacing: -0.3px; color: var(--ink); }
+.title-md  { font-weight: 600; font-size: 18px; line-height: 1.45; letter-spacing: -0.2px; color: var(--ink); }
+.title-sm  { font-weight: 600; font-size: 16px; line-height: 1.5; color: var(--ink); }
+.subtitle  { font-weight: 600; font-size: 18px; line-height: 1.56; }
+.body-lg   { font-weight: 400; font-size: 18px; line-height: 1.56; }
+.body-md   { font-weight: 400; font-size: 16px; line-height: 1.5; }
+.body-sm   { font-weight: 400; font-size: 14px; line-height: 1.43; }
+.caption   { font-weight: 400; font-size: 12px; line-height: 1.33; color: var(--muted); }
+.label-uppercase { font-weight: 600; font-size: 13px; line-height: 1.3; letter-spacing: 1.2px; text-transform: uppercase; }
+.eyebrow   { font-weight: 600; font-size: 13px; line-height: 1.3; letter-spacing: 1.2px; text-transform: uppercase; color: var(--primary); }
+.code-md   { font-family: var(--font-mono); font-weight: 400; font-size: 14px; line-height: 1.43; }
+.code-sm   { font-family: var(--font-mono); font-weight: 400; font-size: 11px; line-height: 1.5; }
+
+/* ---------- Layout helpers ---------- */
+.container { max-width: var(--container); margin: 0 auto; padding-left: var(--xl); padding-right: var(--xl); width: 100%; }
+.section { padding-top: var(--section); padding-bottom: var(--section); }
+.section-sm { padding-top: var(--xxl); padding-bottom: var(--xxl); }
+.band-dark { background: var(--surface-dark); color: var(--on-dark); }
+.band-soft { background: var(--surface-soft); }
+.band-card { background: var(--surface-card); }
+.band-dark .display-xxl,
+.band-dark .display-xl,
+.band-dark .display-lg,
+.band-dark .display-md,
+.band-dark .display-sm,
+.band-dark .title-lg,
+.band-dark .title-md { color: var(--on-dark); }
+.band-dark .body-lg,
+.band-dark .body-md,
+.band-dark .body-sm { color: var(--on-dark-soft); }
+
+.stack-sm > * + * { margin-top: var(--sm); }
+.stack-md > * + * { margin-top: var(--md); }
+.stack-lg > * + * { margin-top: var(--lg); }
+.stack-xl > * + * { margin-top: var(--xl); }
+
+.max-60 { max-width: 640px; }
+.max-70 { max-width: 720px; }
+.text-center { text-align: center; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* ---------- Buttons — every interactive element is a pill ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 44px; padding: 0 var(--lg);
+  font-family: var(--font-body); font-weight: 600; font-size: 16px; line-height: 1; letter-spacing: 0;
+  border-radius: var(--r-full); border: 1px solid transparent; cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--ring-focus); }
+.btn-primary { background: var(--primary); color: var(--on-primary); }
+.btn-primary:hover { background: var(--primary-active); }
+.btn-dark { background: var(--surface-dark); color: var(--on-dark); }
+.btn-dark:hover { background: var(--surface-deep); }
+.btn-secondary { background: var(--surface-card); color: var(--ink); border-color: var(--hairline-strong); }
+.btn-secondary:hover { background: var(--ink); color: var(--on-dark); }
+.btn-ghost { background: transparent; color: var(--ink); padding: 0 var(--md); }
+.btn-ghost:hover { background: var(--surface-soft); }
+.btn-on-dark { background: transparent; color: var(--on-dark); border-color: var(--on-dark); }
+.btn-on-dark:hover { background: var(--on-dark); color: var(--ink); }
+.btn-light { background: var(--surface-card); color: var(--ink); }
+.btn-light:hover { background: var(--surface-soft); }
+
+/* Inline link CTA, "Learn more ›" — links pull into the brand accent */
+.link-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 600; font-size: 14px; letter-spacing: 0;
+  color: var(--primary);
+}
+.link-cta .chev { transition: transform .2s ease; }
+.link-cta:hover .chev { transform: translateX(4px); }
+.band-dark .link-cta { color: var(--on-dark); }
+.link-cta.on-blue { color: var(--primary); }
+
+/* ---------- Cards ---------- */
+.card { background: var(--surface-card); padding: var(--lg); border-radius: var(--r-md); }
+.card-photo { background: var(--surface-soft); overflow: hidden; border-radius: var(--r-md); }
+.card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.grid { display: grid; gap: var(--lg); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ---------- Inputs — pill-shaped ---------- */
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label { font-weight: 600; font-size: 13px; letter-spacing: 0.3px; color: var(--ink); }
+.input, .textarea, select.input {
+  height: 44px; padding: 0 20px;
+  background: var(--surface-card); color: var(--ink);
+  font-family: inherit; font-weight: 400; font-size: 16px;
+  border: 1px solid var(--hairline); border-radius: var(--r-full);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.textarea { height: auto; padding: 14px 20px; resize: vertical; min-height: 140px; border-radius: var(--r-lg); }
+.input:focus, .textarea:focus { outline: none; border-color: var(--hairline-strong); box-shadow: 0 0 0 3px var(--ring-focus); }
+
+/* ---------- Eyebrow accent dash ---------- */
+.stripe-divider {
+  height: 4px; width: 32px; border-radius: var(--r-full);
+  background: var(--primary);
+}
+
+/* ---------- Utility ---------- */
+.eyebrow-row { display: flex; align-items: center; gap: 12px; }
+.divider-line { height: 1px; background: var(--hairline); border: 0; }
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border: 1px solid var(--hairline);
+  font-weight: 400; font-size: 12px; line-height: 1.33;
+  border-radius: var(--r-full);
+  color: var(--ink); background: var(--canvas);
+}
+.badge-success {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border-radius: var(--r-full);
+  font-weight: 500; font-size: 12px; line-height: 1.33;
+  background: var(--success); color: var(--on-dark);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  :root { --section: 64px; }
+  .container { padding-left: var(--lg); padding-right: var(--lg); }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
