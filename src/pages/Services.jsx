@@ -7,12 +7,12 @@ import Reveal from '../components/Reveal.jsx'
 import { SectionHead, CtaBand, PageHero, Chevron } from '../components/Shared.jsx'
 
 const serviceTags = {
-  'web-design': ['branding', 'ux', 'design-systems', 'wcag'],
-  'web-development': ['react', 'next.js', 'cms', 'ai'],
-  'hosting-and-domain': ['ssl', 'cdn', 'backups', '24/7'],
-  'mobile-app-development': ['react-native', 'expo', 'ios', 'android'],
-  'ai-chatbot-development': ['ai', 'automation', 'whatsapp', 'crm'],
-  'cms-ecommerce-development': ['wordpress', 'shopify', 'woocommerce', 'seo'],
+  'web-development': ['booking', 'ecommerce', 'portals', 'custom'],
+  'web-design': ['branding', 'ux', 'mobile-first', 'wcag'],
+  'hosting-and-maintenance': ['ssl', 'backups', 'updates', '24/7'],
+  'wordpress-and-shopify': ['wordpress', 'woocommerce', 'shopify', 'seo'],
+  'app-development': ['react-native', 'ios', 'android', 'expo'],
+  'ai-chatbot': ['ai', 'leads', 'whatsapp', 'booking'],
 }
 
 export default function Services() {

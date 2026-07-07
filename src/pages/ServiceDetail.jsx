@@ -4,18 +4,19 @@ import './pages.css'
 import { services } from '../data.js'
 import { pageTransition, fadeUp, stagger, scaleIn } from '../components/motion.js'
 import Reveal from '../components/Reveal.jsx'
-import { SectionHead, CtaBand, Eyebrow, Chevron, PageHero } from '../components/Shared.jsx'
+import { SectionHead, CtaBand, PageHero, Chevron } from '../components/Shared.jsx'
 
 export default function ServiceDetail() {
   const { slug } = useParams()
   const service = services.find((s) => s.slug === slug)
   if (!service) return <Navigate to="/services" replace />
 
-  const others = services.filter((s) => s.slug !== slug)
+  // Show only the three highest-priority sibling services (array is in priority order).
+  const others = services.filter((s) => s.slug !== slug).slice(0, 3)
 
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
-      {/* HERO — cream opener */}
+      {/* 1 — HERO */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / <Link to="/services">Services</Link> / {service.title}</>}
         eyebrow="Service"
@@ -23,68 +24,98 @@ export default function ServiceDetail() {
         subtitle={service.tagline}
         lead={service.intro}
       >
-        <Link to="/contact" className="btn btn-dark">Start a Project</Link>
-        {slug === 'hosting-and-domain' && <Link to="/pricing" className="btn btn-light">View Pricing</Link>}
+        <Link to="/contact" className="btn btn-dark">Get a Free Quote</Link>
+        <Link to="/pricing" className="btn btn-light">Hosting Plans</Link>
       </PageHero>
 
-      {/* WHAT'S INCLUDED */}
+      {/* 2 — WHO IT'S FOR */}
       <section className="section container">
-        <SectionHead eyebrow="What's included" title={`Everything in ${service.title}.`} />
-        <Reveal variants={stagger}>
-          <motion.ul className="detail-highlights">
-            {service.highlights.map((h) => (
-              <motion.li variants={fadeUp} key={h}><span className="tick">✓</span>{h}</motion.li>
-            ))}
-          </motion.ul>
+        <SectionHead
+          eyebrow="Who it's for"
+          title={service.audiencesTitle}
+          lead={service.audiencesLead}
+        />
+        <Reveal variants={stagger} className="grid grid-3">
+          {service.audiences.map((a, i) => (
+            <motion.div variants={scaleIn} key={a.title} className="svc-mini" style={{ cursor: 'default' }}>
+              <span className="num">{String(i + 1).padStart(2, '0')}</span>
+              <h3 className="title-md">{a.title}</h3>
+              <p className="body-sm" style={{ color: 'var(--muted)' }}>{a.body}</p>
+            </motion.div>
+          ))}
         </Reveal>
       </section>
 
-      {/* DELIVERABLES / PROCESS — soft band */}
+      {/* 3 — WHAT'S INCLUDED */}
       <section className="section band-soft">
         <div className="container">
-          <SectionHead eyebrow="How it works" title="From brief to launch." />
-          <Reveal variants={stagger} className="deliver-grid">
+          <SectionHead eyebrow="What's included" title={`Everything in ${service.title}.`} />
+          <Reveal variants={stagger}>
+            <motion.ul className="detail-highlights">
+              {service.highlights.map((h) => (
+                <motion.li variants={fadeUp} key={h}><span className="tick">✓</span>{h}</motion.li>
+              ))}
+            </motion.ul>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 4 — WHAT WE CAN BUILD */}
+      <section className="section container">
+        <SectionHead
+          eyebrow="Possibilities"
+          title={service.useCasesTitle}
+          lead={service.useCasesLead}
+          center
+        />
+        <Reveal variants={stagger} className="usecase-chips">
+          {service.useCases.map((u) => (
+            <motion.span variants={fadeUp} key={u} className="usecase-chip">{u}</motion.span>
+          ))}
+        </Reveal>
+      </section>
+
+      {/* 5 — HOW IT WORKS */}
+      <section className="section band-dark">
+        <div className="container">
+          <SectionHead title="How it works" center />
+          <Reveal variants={stagger} className="process-rail rail-3">
             {service.deliverables.map((d, i) => (
-              <motion.div variants={fadeUp} key={d.title} className="deliver-card">
-                <div className="dnum">STEP {`0${i + 1}`}</div>
+              <motion.div variants={fadeUp} key={d.title} className="process-node">
+                <div className="process-dot">{i + 1}</div>
                 <h4 className="title-lg">{d.title}</h4>
-                <p className="body-md" style={{ color: 'var(--muted)' }}>{d.body}</p>
+                <p className="body-sm">{d.body}</p>
               </motion.div>
             ))}
           </Reveal>
         </div>
       </section>
 
-      {/* SUPPORTING SPLIT */}
+      {/* 6 — TOOLS & HOW WE DO IT */}
       <section className="section container">
-        <div className="split">
-          <Reveal className="split-media" variants={scaleIn}>
-            <img src={service.hero} alt={service.title} loading="lazy" />
-          </Reveal>
-          <Reveal className="split-body" variants={stagger}>
-            <motion.div variants={fadeUp}><Eyebrow>Why it matters</Eyebrow></motion.div>
-            <motion.h2 variants={fadeUp} className="display-md" style={{ marginTop: 16 }}>
-              Built to perform, made to last.
-            </motion.h2>
-            <motion.p variants={fadeUp} className="body-md" style={{ marginTop: 16 }}>
-              {service.title} at Jazba Host isn't a template drop. We tailor everything to your
-              business goals, wire in the integrations you need, and back it with real support — so
-              your investment keeps paying off.
-            </motion.p>
-            <motion.div variants={fadeUp} style={{ marginTop: 28 }}>
-              <Link to="/contact" className="btn btn-secondary">Discuss Your Project</Link>
+        <SectionHead
+          eyebrow="Tools & tech"
+          title={service.toolsTitle}
+          lead={service.toolsLead}
+          center
+        />
+        <Reveal variants={stagger} className="grid grid-3">
+          {service.tools.map((t) => (
+            <motion.div variants={scaleIn} key={t.name} className="tool-card">
+              <span className="tool-name">{t.name}</span>
+              <p className="body-sm" style={{ color: 'var(--muted)' }}>{t.note}</p>
             </motion.div>
-          </Reveal>
-        </div>
+          ))}
+        </Reveal>
       </section>
 
-      {/* OTHER SERVICES */}
+      {/* 7 — OTHER SERVICES */}
       <section className="section band-soft">
         <div className="container">
           <SectionHead eyebrow="Keep exploring" title="Other services." />
           <Reveal variants={stagger} className="grid grid-3">
             {others.map((s) => (
-              <motion.div variants={scaleIn} key={s.slug}>
+              <motion.div variants={scaleIn} key={s.slug} style={{ height: '100%' }}>
                 <Link to={`/services/${s.slug}`} className="svc-card">
                   <div className="card-photo" style={{ aspectRatio: '16 / 9' }}><img src={s.hero} alt={s.title} loading="lazy" /></div>
                   <div className="svc-card-body">
@@ -99,10 +130,10 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* 8 — CTA */}
       <CtaBand
         title={`Ready to get started with ${service.title}?`}
-        text="Send us a message and we'll come back with a clear plan and a fair quote."
-        primaryLabel="Get a Quote"
+        text="Send us a message and we'll come back with a clear plan and a fair quote — free consultation, no pressure."
       />
     </motion.div>
   )

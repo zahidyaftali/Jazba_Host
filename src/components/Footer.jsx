@@ -35,6 +35,7 @@ export default function Footer() {
             <li><Link className="footer-link" to="/">Home</Link></li>
             <li><Link className="footer-link" to="/about">About Us</Link></li>
             <li><Link className="footer-link" to="/services">All Services</Link></li>
+            <li><Link className="footer-link" to="/portfolio">Portfolio</Link></li>
             <li><Link className="footer-link" to="/contact">Contact</Link></li>
           </ul>
         </div>
@@ -55,7 +56,9 @@ export default function Footer() {
       <div className="container footer-bottom">
         <span className="body-sm">© {year} Jazba Host — Jazba Entertainment Ltd. All rights reserved.</span>
         <span className="body-sm footer-bottom-links">
-          <Link to="/contact" className="footer-link">Get a Quote</Link>
+          <Link to="/privacy" className="footer-link">Privacy Policy</Link>
+          <span className="dot">·</span>
+          <Link to="/terms" className="footer-link">Terms of Use</Link>
           <span className="dot">·</span>
           <a href="mailto:info@jazbaentertainment.com" className="footer-link">info@jazbaentertainment.com</a>
         </span>

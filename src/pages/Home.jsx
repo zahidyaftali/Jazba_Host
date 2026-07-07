@@ -87,31 +87,33 @@ export default function Home() {
         />
         <Reveal variants={stagger} className="grid grid-3">
           {featuredWork.map((w) => (
-            <motion.div variants={scaleIn} key={w.title} className="work-card">
-              <div className="work-photo">
-                <img src={w.image} alt={w.title} loading="lazy" />
-                <span className="work-cat">{w.category}</span>
-              </div>
-              <div className="work-body">
-                <h3 className="title-md">{w.title}</h3>
-                <p className="body-sm" style={{ color: 'var(--muted)' }}>{w.body}</p>
-                <div className="work-tech">
-                  {w.tech.map((t) => <span className="tech-chip" key={t}>{t}</span>)}
+            <motion.div variants={scaleIn} key={w.slug} style={{ height: '100%' }}>
+              <Link to={`/portfolio/${w.slug}`} className="work-card">
+                <div className="work-photo">
+                  <img src={w.image} alt={w.title} loading="lazy" />
+                  <span className="work-cat">{w.category}</span>
                 </div>
-                <div className="work-metrics">
-                  {w.metrics.map((m) => (
-                    <div key={m.label}>
-                      <div className="metric-v">{m.value}</div>
-                      <div className="metric-l">{m.label}</div>
-                    </div>
-                  ))}
+                <div className="work-body">
+                  <h3 className="title-md">{w.title}</h3>
+                  <p className="body-sm" style={{ color: 'var(--muted)' }}>{w.body}</p>
+                  <div className="work-tech">
+                    {w.tech.slice(0, 4).map((t) => <span className="tech-chip" key={t}>{t}</span>)}
+                  </div>
+                  <div className="work-metrics">
+                    {w.metrics.map((m) => (
+                      <div key={m.label}>
+                        <div className="metric-v">{m.value}</div>
+                        <div className="metric-l">{m.label}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </Reveal>
         <Reveal variants={fadeUp} className="text-center" style={{ marginTop: 40 }}>
-          <Link to="/services" className="btn btn-secondary">View All Projects</Link>
+          <Link to="/portfolio" className="btn btn-secondary">View All Projects</Link>
         </Reveal>
       </section>
 
