@@ -13,6 +13,7 @@ import Pricing from './pages/Pricing.jsx'
 import Contact from './pages/Contact.jsx'
 import Terms from './pages/Terms.jsx'
 import Privacy from './pages/Privacy.jsx'
+import ComingSoon from './pages/ComingSoon.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 function ScrollToTop() {
@@ -21,12 +22,16 @@ function ScrollToTop() {
   return null
 }
 
+// The launch page stands alone — no nav or footer to click away from.
+const BARE_ROUTES = ['/coming-soon']
+
 export default function App() {
   const location = useLocation()
+  const bare = BARE_ROUTES.includes(location.pathname)
   return (
     <>
       <ScrollToTop />
-      <Navbar />
+      {!bare && <Navbar />}
       <main>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
@@ -40,11 +45,12 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/coming-soon" element={<ComingSoon />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
       </main>
-      <Footer />
+      {!bare && <Footer />}
     </>
   )
 }
