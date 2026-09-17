@@ -20,7 +20,7 @@ export default function Portfolio() {
         crumbs={<><Link to="/">Home</Link> / Portfolio</>}
         eyebrow="Our Work"
         title="Work that works."
-        lead="Real projects for UK startups, growing businesses and large organisations — built, hosted and maintained by one team. Every number below is measured, not guessed."
+        lead="Every site below is live right now — designed and built by us, running on our hosting, and looked after by us every week. Charities, restaurants, salons, cleaning contractors, retail launches and awards nights."
       />
 
       {/* PROJECT GRID */}
@@ -51,21 +51,24 @@ export default function Portfolio() {
                     <span className="work-cat">{p.category}</span>
                   </div>
                   <div className="work-body">
-                    <div className="project-meta">{p.client} · {p.location} · {p.year}</div>
+                    <div className="project-meta">{p.client} · {p.location}</div>
                     <h3 className="title-lg">{p.title}</h3>
                     <p className="body-sm" style={{ color: 'var(--muted)' }}>{p.body}</p>
                     <div className="work-tech">
                       {p.tech.slice(0, 4).map((t) => <span className="tech-chip" key={t}>{t}</span>)}
                     </div>
                     <div className="work-metrics">
-                      {p.metrics.map((m) => (
+                      {p.facts.map((m) => (
                         <div key={m.label}>
                           <div className="metric-v">{m.value}</div>
                           <div className="metric-l">{m.label}</div>
                         </div>
                       ))}
                     </div>
-                    <span className="link-cta" style={{ marginTop: 16 }}>View case study <Chevron /></span>
+                    <div className="work-foot">
+                      <span className="work-domain">{p.domain}</span>
+                      <span className="link-cta">View case study <Chevron /></span>
+                    </div>
                   </div>
                 </Link>
               </motion.div>

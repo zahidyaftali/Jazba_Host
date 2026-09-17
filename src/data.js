@@ -20,9 +20,6 @@ export const img = {
   code:       'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80',
   server:     'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80',
   cta:        'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80',
-  work1:      'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1000&q=80',
-  work2:      'https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=1000&q=80',
-  work3:      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
   ukOffice:   'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1000&q=80',
   pkOffice:   'https://images.unsplash.com/photo-1590341328520-63256eb32bc3?auto=format&fit=crop&w=1000&q=80',
   mobileDev:  'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
@@ -396,222 +393,352 @@ export const homeServices = [
   },
 ]
 
-// Portfolio projects — each has a case-study page at /portfolio/:slug.
+// Portfolio projects — live client sites we built, host and maintain.
+// Each has a case-study page at /portfolio/:slug.
+// Copy is written from the live sites themselves; `facts` are observable
+// (top-level pages, platform detected in the page source) rather than claimed.
 export const projects = [
   {
-    slug: 'bloom-and-co',
-    category: 'eCommerce',
-    title: 'Bloom & Co. eCommerce Platform',
-    client: 'Bloom & Co.',
-    location: 'London, UK',
-    year: '2025',
-    body: 'A premium Shopify store for a luxury floral brand, featuring custom product configurators and subscription services.',
-    image: img.work1,
-    tech: ['Shopify', 'Shopify Liquid', 'Custom Theme', 'Stripe', 'Klaviyo'],
-    metrics: [
-      { value: '120%', label: 'Revenue Increase' },
-      { value: '4.2%', label: 'Conversion Rate' },
-      { value: '1.8s', label: 'Page Load Time' },
+    slug: 'arif-lohar-jugni-king',
+    category: 'Events & Media',
+    title: 'Arif Lohar — Official Artist Site',
+    client: 'Arif Lohar',
+    location: 'UK & Worldwide',
+    url: 'https://arifloharjugniking.com',
+    domain: 'arifloharjugniking.com',
+    body: 'The official home of the Jugni King — a full-bleed, cinematic artist site with music, awards, events and gallery in one place.',
+    image: '/portfolio/arifloharjugniking.jpg',
+    tech: ['WordPress', 'Elementor', 'Swiper', 'Spotify Embed', 'Managed Hosting'],
+    facts: [
+      { value: '7', label: 'Top-level pages' },
+      { value: 'WordPress', label: 'Built on' },
+      { value: 'Managed', label: 'Hosting & care' },
     ],
+    screenshotNotes:
+      'A black-and-gold header carries the gold monogram logo, a seven-item menu — Home, History, Music, Award, Events, Gallery, Contact — and circular Instagram, YouTube, Facebook and Spotify buttons. The hero is a full-bleed monochrome photograph of Arif Lohar mid-performance with his chimta, dimmed so the overlay reads cleanly: a gold rule and the eyebrow “The Jugni King · Official Website”, then the line “Arif Lohar — Pakistan’s most celebrated Punjabi folk artist. From Wembley Arena to FIFA. Carrying a dynasty across 70+ countries.”, and two gold buttons, Listen Now and Book Now. A gold-outlined player card floats over the lower right with the latest release artwork queued up. Further down the page a stat row counts 3,200+ songs, 160+ albums, 150+ countries, 35+ years and 45+ films.',
     challenge:
-      "Bloom & Co.'s template store looked nothing like their luxury brand, took almost five seconds to load, and made building a bouquet a ten-click ordeal. Subscriptions — the heart of their business plan — were bolted on with three conflicting apps that regularly double-charged customers.",
+      'A folk artist with a decades-long catalogue had his music, awards, tour dates and press photos scattered across social platforms he does not control. Fans, bookers and journalists all arrived looking for different things, and there was no single official source to send them to.',
     solution:
-      'We rebuilt the store on a custom Shopify theme designed around their brand, with a drag-and-drop bouquet configurator, a native subscription flow with Stripe billing, and Klaviyo automations for post-purchase care. We host and maintain the store, so seasonal campaigns ship in days, not weeks.',
+      'We built a cinematic one-stop artist site: a full-bleed performance hero, an embedded player for the current release, and separate History, Music, Award, Events and Gallery sections so each audience has somewhere to land. The black-and-gold treatment and desaturated photography keep the focus on the artist rather than the interface, and social and streaming links sit permanently in the header.',
     results: [
-      '120% revenue increase in the first six months',
-      'Conversion rate up from 1.9% to 4.2%',
-      'Page load time cut from 4.6s to 1.8s',
-      'Subscriptions now make up 30% of monthly revenue',
+      'One official destination for fans, promoters and press',
+      'Latest release playable from the homepage without leaving the site',
+      'Awards and performance history documented in their own sections',
+      'Instagram, YouTube, Facebook and Spotify reachable from every page',
     ],
-    quote: {
-      text: 'Jazba Host transformed our online presence completely. Their team understood our brand perfectly and delivered beyond our expectations.',
-      name: 'Sarah Mitchell',
-      role: 'Founder, Bloom & Co.',
-    },
-    serviceLinks: [
-      { label: 'WordPress & Shopify', to: '/services/wordpress-and-shopify' },
-      { label: 'Hosting & Maintenance', to: '/services/hosting-and-maintenance' },
-    ],
-  },
-  {
-    slug: 'techbridge-analytics',
-    category: 'Web Development',
-    title: 'TechBridge Analytics Dashboard',
-    client: 'TechBridge Solutions',
-    location: 'Birmingham, UK',
-    year: '2025',
-    body: 'A real-time analytics dashboard built with Next.js, featuring interactive data visualisations and role-based access control.',
-    image: img.work3,
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Recharts', 'Node.js'],
-    metrics: [
-      { value: '50x faster', label: 'Data Processing' },
-      { value: '95%', label: 'User Adoption' },
-      { value: '99.97%', label: 'Uptime' },
-    ],
-    challenge:
-      'TechBridge ran client reporting out of a tangle of spreadsheets that took analysts two days per client per month to assemble — and clients could never see live numbers. Off-the-shelf BI tools priced them out and none matched their workflow.',
-    solution:
-      'We built a custom analytics platform: a Node.js pipeline ingesting client data into PostgreSQL, a Next.js dashboard with role-based access so each client sees only their own numbers, and interactive Recharts visualisations with scheduled PDF exports. Hosted and monitored by us with a 99.9% SLA.',
-    results: [
-      'Report generation from two days to under an hour — 50x faster',
-      '95% of clients now log in weekly',
-      '99.97% measured uptime in the last 12 months',
-      'Analyst hours redirected to consultancy revenue',
-    ],
-    quote: {
-      text: 'We needed a complex web application with real-time features, and Jazba Host delivered it on time and within budget. Their technical expertise is outstanding.',
-      name: 'James Patel',
-      role: 'Director, TechBridge Solutions',
-    },
-    serviceLinks: [
-      { label: 'Web Development', to: '/services/web-development' },
-      { label: 'Hosting & Maintenance', to: '/services/hosting-and-maintenance' },
-    ],
-  },
-  {
-    slug: 'pureskin-app',
-    category: 'App Development',
-    title: 'PureSkin Mobile App',
-    client: 'PureSkin',
-    location: 'Manchester, UK',
-    year: '2024',
-    body: 'A cross-platform beauty and skincare app with AI-powered product recommendations and virtual try-on features.',
-    image: img.work2,
-    tech: ['React Native', 'Expo', 'Firebase', 'OpenAI', 'Stripe'],
-    metrics: [
-      { value: '50K+', label: 'App Downloads' },
-      { value: '12K', label: 'Daily Active Users' },
-      { value: '+85%', label: 'In-App Purchases' },
-    ],
-    challenge:
-      "PureSkin's mobile web store converted poorly — customers wanted personalised routines and repeat ordering, but the website couldn't remember preferences or send restock reminders. Two earlier agency quotes for separate iOS and Android apps blew the budget.",
-    solution:
-      'One React Native codebase, both app stores. We built an AI skin-quiz that generates personalised routines with OpenAI, push-notification restock reminders, Stripe in-app purchases and a loyalty wallet — all synced with their existing website, which we also host.',
-    results: [
-      '50,000+ downloads in the first year',
-      '12,000 daily active users',
-      'In-app purchases up 85% versus mobile web',
-      'One codebase — roughly half the cost of two native apps',
-    ],
-    quote: {
-      text: 'The store Jazba Host built for us is beautiful and incredibly fast. Our conversion rate has doubled since the launch.',
-      name: 'Emily Richardson',
-      role: 'Marketing Manager, PureSkin',
-    },
-    serviceLinks: [
-      { label: 'App Development', to: '/services/app-development' },
-      { label: 'AI Chatbot', to: '/services/ai-chatbot' },
-    ],
-  },
-  {
-    slug: 'thames-dental',
-    category: 'Web Design',
-    title: 'Thames Dental Studio Website',
-    client: 'Thames Dental Studio',
-    location: 'London, UK',
-    year: '2025',
-    body: 'A calm, trust-building redesign for a private dental practice, with online booking that fills the diary while the phones are quiet.',
-    image: img.booking,
-    tech: ['Figma', 'WordPress', 'Booking System', 'Stripe', 'GA4'],
-    metrics: [
-      { value: '+65%', label: 'Online Bookings' },
-      { value: '2x', label: 'New Patient Enquiries' },
-      { value: '1.2s', label: 'Page Load Time' },
-    ],
-    challenge:
-      "Thames Dental's dated website made a premium practice look budget, and every appointment still went through the phone — missed calls meant missed patients. Treatment pages buried pricing, so front desk spent hours answering the same questions.",
-    solution:
-      'We redesigned the site around patient trust: real photography, clear treatment pages with transparent pricing, and reviews woven throughout. An online booking system with deposits via Stripe syncs to their practice diary, and we host and maintain the site under a care plan.',
-    results: [
-      'Online bookings up 65% in three months',
-      'New patient enquiries doubled',
-      'Load time cut to 1.2 seconds',
-      'Front-desk call volume down by a third',
-    ],
-    quote: {
-      text: 'Patients now tell us the website was the reason they chose us. Booking online has quietly become our best receptionist.',
-      name: 'Dr. Priya Sharma',
-      role: 'Principal Dentist, Thames Dental Studio',
+    care: {
+      title: 'What we handle day to day',
+      points: [
+        'New releases and gallery updates as they drop',
+        'Event and tour date changes',
+        'WordPress, theme and plugin updates',
+        'Hosting, SSL, backups and uptime monitoring',
+      ],
     },
     serviceLinks: [
       { label: 'Web Design', to: '/services/web-design' },
-      { label: 'Web Development', to: '/services/web-development' },
+      { label: 'WordPress & Shopify', to: '/services/wordpress-and-shopify' },
     ],
   },
   {
-    slug: 'northgate-properties',
-    category: 'WordPress',
-    title: 'Northgate Properties Portal',
-    client: 'Northgate Properties',
-    location: 'Birmingham, UK',
-    year: '2024',
-    body: 'A WordPress property portal for a growing estate agency — live listings, instant valuations and lead capture built in.',
-    image: img.ukOffice,
-    tech: ['WordPress', 'ACF', 'Property Feed API', 'Rank Math', 'WP Rocket'],
-    metrics: [
-      { value: '300+', label: 'Live Listings' },
-      { value: '+45%', label: 'Vendor Leads' },
-      { value: '98/100', label: 'PageSpeed Score' },
+    slug: 'bab-alzahia-cleaning',
+    category: 'Services & Trades',
+    title: 'Bab Alzahia Cleaning Services',
+    client: 'Bab Alzahia Cleaning Services (S.P.S-L.L.C)',
+    location: 'Ajman, UAE',
+    url: 'https://babalzahia.com',
+    domain: 'babalzahia.com',
+    body: 'A bold, booking-first site for a UAE cleaning company — packages, FAQs and a Schedule A Service button that follows you down the page.',
+    image: '/portfolio/babalzahia.jpg',
+    tech: ['WordPress', 'Elementor', 'Booking Forms', 'Swiper', 'Managed Hosting'],
+    facts: [
+      { value: '6', label: 'Top-level pages' },
+      { value: 'WordPress', label: 'Built on' },
+      { value: 'Managed', label: 'Hosting & care' },
     ],
+    screenshotNotes:
+      'A navy announcement bar carries the full registered company name in yellow, sitting above a lime-green navigation bar with the logo, a six-item menu including a Services dropdown and Cleaning Packages, and a white-outlined Schedule A Service button. The hero is a bright daytime UAE skyline photograph under a big blue sky, with a large rounded lime panel over the left third: the headline “Professional & Affordable Cleaning Services For Homes Across Ajman” in white and yellow, a line about premium cleaning at affordable rates for Ajman and nearby areas, and a navy Call Now button with the phone number set directly into it.',
     challenge:
-      'Northgate paid heavy monthly fees to the big property portals but their own website — a slow page-builder theme — generated almost no direct leads. Listings had to be retyped by hand and vanished from Google.',
+      'A cleaning company competing on price and coverage in Ajman needed people to reach a booking in as few taps as possible, while still making the packages, service list and licensing status obvious enough to be trusted by residential and commercial clients alike.',
     solution:
-      'A custom WordPress build with ACF-powered listings synced automatically from their agency software, map and filter search, an instant-valuation tool that captures vendor leads, and Rank Math SEO tuned for local searches. We host it on our UK servers and keep everything updated.',
+      'We put the booking button in the navigation bar so it is on screen from the first pixel, gave packages their own top-level menu item rather than burying them under Services, and used the company’s lime and navy brand colours at full strength so the calls to action cannot be missed. The registered company name sits in a permanent bar at the top for credibility.',
     results: [
-      '300+ listings syncing automatically — zero retyping',
-      'Vendor valuation leads up 45%',
-      '98/100 Google PageSpeed on mobile',
-      'Page-one rankings for 14 local search terms',
+      'Schedule A Service reachable from every page in the navigation',
+      'Cleaning Packages promoted to a top-level menu item',
+      'Service breakdown handled by a dropdown instead of one long page',
+      'FAQs section built in to cut repeat phone enquiries',
     ],
-    quote: {
-      text: 'For the first time our own website out-performs the portals we pay for. The valuation tool alone paid for the build in two months.',
-      name: 'Mark Davies',
-      role: 'Director, Northgate Properties',
+    care: {
+      title: 'What we handle day to day',
+      points: [
+        'Package and pricing updates',
+        'Booking form delivery checks',
+        'WordPress core, theme and plugin updates',
+        'Hosting, SSL, backups and uptime monitoring',
+      ],
     },
     serviceLinks: [
-      { label: 'WordPress & Shopify', to: '/services/wordpress-and-shopify' },
+      { label: 'Web Design', to: '/services/web-design' },
       { label: 'Hosting & Maintenance', to: '/services/hosting-and-maintenance' },
     ],
   },
   {
-    slug: 'digiventure-assistant',
-    category: 'AI Chatbot',
-    title: 'DigiVenture AI Support Assistant',
-    client: 'DigiVenture',
-    location: 'Islamabad, Pakistan',
-    year: '2025',
-    body: 'An AI assistant trained on 400+ support articles, resolving customer queries in seconds across web chat and WhatsApp.',
-    image: img.aiChat,
-    tech: ['OpenAI', 'WhatsApp API', 'Web Chat Widget', 'HubSpot', 'Analytics'],
-    metrics: [
-      { value: '92%', label: 'Queries Auto-Resolved' },
-      { value: '<5s', label: 'Avg. Response Time' },
-      { value: '+38%', label: 'Captured Leads' },
+    slug: 'beaute-academy',
+    category: 'Beauty & Training',
+    title: 'Beaute Academy Salon & Training',
+    client: 'Beaute Academy',
+    location: 'Birmingham, UK',
+    url: 'https://beauteacademy.co.uk',
+    domain: 'beauteacademy.co.uk',
+    body: 'A dark, high-contrast site for a long-established Birmingham salon and training academy, built around online booking.',
+    image: '/portfolio/beauteacademy.jpg',
+    tech: ['WordPress', 'Elementor', 'Online Booking', 'Custom Fonts', 'Managed Hosting'],
+    facts: [
+      { value: '5', label: 'Top-level pages' },
+      { value: 'WordPress', label: 'Built on' },
+      { value: 'Managed', label: 'Hosting & care' },
     ],
+    screenshotNotes:
+      'A dark header carries the black-and-red Beaute Academy logo top left, a five-item red menu — Home, About, Services, Prices, Contact Us — and a red pill Book Online button top right. The hero is a full-bleed photograph from inside the salon, a stylist at work behind a seated client, darkened so the type sits cleanly over it: a large serif headline reading “Redefining Beauty, Empowering Confidence.”, a paragraph on twenty-five years of treatments, professional training and bridal work, and a red Make Appointment button. Below the fold an eight-tile grid covers hairdressing, beauty, nails, lashes and brows, bridal, makeup, training courses and studio retail.',
     challenge:
-      "DigiVenture's support inbox took hours to answer even simple questions, and enquiries arriving overnight were lost by morning. Hiring a 24/7 support team was not an option at their stage.",
+      'The academy runs two businesses from one address — a luxury treatment salon and a professional training school, plus bridal packages — and its twenty-five-year reputation was doing more work than its website was. Bookings were arriving by phone and message rather than online.',
     solution:
-      'We trained an AI assistant on their 400+ help articles and product docs, deployed it on web chat and WhatsApp, and connected it to HubSpot so qualified leads and unresolved cases route to the right human instantly. Monthly tuning keeps answer quality climbing.',
+      'We stripped the homepage back to a single serif statement on near-black so the brand reads as premium rather than busy, and gave booking two permanent entry points: a Book Online button pinned in the navigation and a Make Appointment call to action directly under the hero copy. Prices sit at top level so clients can check before they call.',
     results: [
-      '92% of queries resolved without a human',
-      'Average response time from hours to under 5 seconds',
-      'Captured leads up 38% — nights and weekends included',
-      'Support team refocused on high-value accounts',
+      'Two booking entry points visible without scrolling',
+      'Prices given their own menu item rather than a PDF or an enquiry',
+      'Salon treatments, training courses and bridal work each explained separately',
+      'Dark, type-led design that matches the salon’s existing branding',
     ],
-    quote: {
-      text: "Jazba Host's AI chatbot has revolutionised our customer support. Response times dropped from hours to seconds.",
-      name: 'Ahmed Khan',
-      role: 'CEO, DigiVenture',
+    care: {
+      title: 'What we handle day to day',
+      points: [
+        'Treatment, course and price list updates',
+        'Booking integration monitoring',
+        'Seasonal and bridal campaign pages',
+        'Hosting, SSL, backups and uptime monitoring',
+      ],
     },
     serviceLinks: [
-      { label: 'AI Chatbot', to: '/services/ai-chatbot' },
+      { label: 'Web Design', to: '/services/web-design' },
+      { label: 'Hosting & Maintenance', to: '/services/hosting-and-maintenance' },
+    ],
+  },
+  {
+    slug: 'between-you-and-me-seva',
+    category: 'Charity & Community',
+    title: 'Between You and Me SEVA Counselling',
+    client: 'Between You and Me SEVA',
+    location: 'United Kingdom',
+    url: 'https://betweenyouandmeseva.com',
+    domain: 'betweenyouandmeseva.com',
+    body: 'A calm, trust-led site for a not-for-profit counselling service — with a referral form built straight into the navigation.',
+    image: '/portfolio/betweenyouandmeseva.jpg',
+    tech: ['WordPress', 'Elementor', 'Referral Forms', 'Accessible Type', 'Managed Hosting'],
+    facts: [
+      { value: '7', label: 'Top-level pages' },
+      { value: 'WordPress', label: 'Built on' },
+      { value: 'Managed', label: 'Hosting & care' },
+    ],
+    screenshotNotes:
+      'A white header holds the circular heart logo and a seven-item menu — Home, About, Services with a dropdown, SEVA Supervisor, Fees, Referral Form and Contact. The hero sits on a soft peach curve: a purple serif headline, “Your Well-Being is What Defines Our Purpose”, a short line about confidential and compassionate support, a magenta Learn More button, and a rounded lifestyle photograph on the right. Below the curve, an About Us section explains the social enterprise model, the therapist team and the multilingual, community-focused approach.',
+    challenge:
+      'A not-for-profit counselling social enterprise serving diverse communities in several languages needed a site that felt safe to arrive at in a difficult moment — while still making fees, supervision credentials and the referral process findable for the professionals sending clients their way.',
+    solution:
+      'We used a soft peach and purple palette with generous line spacing and a serif headline so the page reads as calm rather than clinical. Fees and the Referral Form are both top-level menu items, so neither a worried individual nor a referring professional has to hunt. The About section sets out the BACP-registered, social-enterprise and multilingual credentials in plain language.',
+    results: [
+      'Referral Form promoted to its own navigation item for partner agencies',
+      'Fees published openly instead of sitting behind an enquiry',
+      'SEVA Supervisor given a dedicated page for supervision enquiries',
+      'Calm, high-contrast typography chosen for readability under stress',
+    ],
+    care: {
+      title: 'What we handle day to day',
+      points: [
+        'Referral and contact form delivery monitoring',
+        'Fee and service updates',
+        'WordPress core, theme and plugin updates',
+        'Hosting, SSL, backups and uptime monitoring',
+      ],
+    },
+    serviceLinks: [
+      { label: 'Web Design', to: '/services/web-design' },
+      { label: 'Hosting & Maintenance', to: '/services/hosting-and-maintenance' },
+    ],
+  },
+  {
+    slug: 'buynow-uk',
+    category: 'eCommerce',
+    title: 'BuyNow UK Retail Launch Store',
+    client: 'BuyNow UK',
+    location: 'United Kingdom',
+    url: 'https://buynowuk.com',
+    domain: 'buynowuk.com',
+    body: 'A React and Tailwind storefront for a UK retail launch — category browsing, waiting-list capture and launch alerts.',
+    image: '/portfolio/buynowuk.jpg',
+    tech: ['React', 'Vite', 'Tailwind CSS', 'Waiting List Capture', 'Managed Hosting'],
+    facts: [
+      { value: '3', label: 'Shop categories' },
+      { value: 'React', label: 'Built on' },
+      { value: 'Managed', label: 'Hosting & care' },
+    ],
+    screenshotNotes:
+      'A navy strip across the top announces the spring launch and the five-thousand-strong waiting list. Under it sits a white bar with the BuyNow UK cart logo, three category links — Kitchen, Health, Tech — and a bell-icon Alerts button. The hero photograph of a coastal ridge is washed out behind a two-tone headline, “The Next Gen of Daily Utility.”, in navy and green, with a short positioning paragraph and paired Explore Collection and Browse Categories buttons. A four-icon trust strip runs along the bottom: Secure UK Store, Quality Tested, Launch Alerts and Early-Bird Perks.',
+    challenge:
+      'A new UK retail brand needed to build an audience before it had stock to sell. A conventional store would have shown empty categories; the site had to make browsing the range feel real while the actual job was collecting a waiting list.',
+    solution:
+      'We built a fast static storefront in React and Tailwind rather than a full commerce platform, so there was no cart to maintain pre-launch. Category browsing gives the range shape, the announcement bar and Alerts button capture sign-ups from anywhere on the page, and a trust strip answers the credibility questions a brand-new retailer always gets asked.',
+    results: [
+      'Waiting-list capture available from the announcement bar, the header and the hero',
+      'Kitchen, Health and Tech ranges browsable before launch',
+      'Static React build with no storefront platform fees pre-launch',
+      'Trust strip addressing UK sourcing, quality testing and early-bird perks',
+    ],
+    care: {
+      title: 'What we handle day to day',
+      points: [
+        'Product and category content updates',
+        'Waiting list and alert capture monitoring',
+        'Build and deploy pipeline for each release',
+        'Hosting, SSL, backups and uptime monitoring',
+      ],
+    },
+    serviceLinks: [
       { label: 'Web Development', to: '/services/web-development' },
+      { label: 'Hosting & Maintenance', to: '/services/hosting-and-maintenance' },
+    ],
+  },
+  {
+    slug: 'csfm-cleaning',
+    category: 'Services & Trades',
+    title: 'CSFM Cleaning Birmingham',
+    client: 'CSFM Cleaning',
+    location: 'Birmingham, UK',
+    url: 'https://csfmcleaning.com',
+    domain: 'csfmcleaning.com',
+    body: 'A clean, professional site for a Birmingham cleaning contractor, built so the Schedule A Service button is never off screen.',
+    image: '/portfolio/csfmcleaning.jpg',
+    tech: ['WordPress', 'Elementor', 'Booking Forms', 'Responsive Layout', 'Managed Hosting'],
+    facts: [
+      { value: '5', label: 'Top-level pages' },
+      { value: 'WordPress', label: 'Built on' },
+      { value: 'Managed', label: 'Hosting & care' },
+    ],
+    screenshotNotes:
+      'A deep navy bar runs the full width with the CSFM Cleaning wordmark and its “Cleaners You Can Trust” strapline on the left, a five-item menu — Home, About, Services, FAQs, Contact — in the centre, and a gradient Schedule A Service button on the right. The hero splits in two: a rounded navy card on the left holds the headline “Affordable And Reliable Cleaning Services For Homes In Birmingham And Beyond.” with Cleaning picked out in bright blue, the positioning line about budget-friendly rates across Birmingham and surrounding areas, and a Get Started button. The right half is a close photograph of a mop and blue bucket with yellow gloves on a freshly washed floor.',
+    challenge:
+      'A Birmingham cleaning contractor was being judged in the first few seconds against much larger facilities-management firms, and needed a site that looked established without hiding the two things its customers actually want: coverage area and a way to book.',
+    solution:
+      'We went with a restrained navy-and-white treatment and real photography of the work rather than stock icons, put the coverage claim inside the hero card itself, and pinned the Schedule A Service button into the navigation bar. An FAQs page absorbs the repeat questions that were previously eating phone time.',
+    results: [
+      'Coverage area stated in the first thing a visitor reads',
+      'Schedule A Service button present in the navigation on every page',
+      'FAQs page built to cut repeat phone enquiries',
+      'Professional navy branding that holds up against larger competitors',
+    ],
+    care: {
+      title: 'What we handle day to day',
+      points: [
+        'Service and coverage area updates',
+        'Booking form delivery checks',
+        'WordPress core, theme and plugin updates',
+        'Hosting, SSL, backups and uptime monitoring',
+      ],
+    },
+    serviceLinks: [
+      { label: 'Web Design', to: '/services/web-design' },
+      { label: 'Hosting & Maintenance', to: '/services/hosting-and-maintenance' },
+    ],
+  },
+  {
+    slug: 'istanbul-restaurant-birmingham',
+    category: 'Hospitality',
+    title: 'Istanbul Restaurant Birmingham',
+    client: 'Istanbul Restaurant',
+    location: 'Birmingham, UK',
+    url: 'https://istanbulrestaurantbirmingham.com',
+    domain: 'istanbulrestaurantbirmingham.com',
+    body: 'An appetite-first site for a Birmingham Turkish restaurant — phone number, menu and table booking all above the fold.',
+    image: '/portfolio/istanbulrestaurantbirmingham.jpg',
+    tech: ['WordPress', 'Elementor', 'Swiper Gallery', 'Google Site Kit', 'Managed Hosting'],
+    facts: [
+      { value: '5', label: 'Top-level pages' },
+      { value: 'WordPress', label: 'Built on' },
+      { value: 'Managed', label: 'Hosting & care' },
+    ],
+    screenshotNotes:
+      'A full-bleed overhead food photograph — tomatoes, pasta, basil, peppercorns and wooden spoons on dark slate — runs behind the whole hero. A red phone icon and the number sit top left, the red-and-white Istanbul Restaurant logo is centred, and a five-item menu — Home, About Us, Our Menu, Gallery, Contact Us — sits below it alongside Instagram, Google and search icons and a red Book A Table button. The headline spans three lines over the photograph and a red Discover Our Menu button sits beneath, with a torn-paper edge cutting into the next section.',
+    challenge:
+      'A Turkish restaurant in a crowded Birmingham dining market was competing for people deciding where to eat in the next hour — usually on a phone. Whatever the site did, it had to make the food look good and get to a phone call, a menu or a table booking immediately.',
+    solution:
+      'We led with full-bleed food photography and layered the three actions people actually want straight over it: the phone number in the top corner, Book A Table in the navigation, and Discover Our Menu as the hero button. A Google Site Kit integration keeps search and visitor data in the owner’s hands, and a Swiper-driven gallery keeps new dishes easy to publish.',
+    results: [
+      'Phone number, menu and table booking all reachable without scrolling',
+      'Food photography leading the page instead of decorative graphics',
+      'Gallery the owner can add new dishes to without a developer',
+      'Google Search Console and Analytics connected from launch',
+    ],
+    care: {
+      title: 'What we handle day to day',
+      points: [
+        'Menu and seasonal dish updates',
+        'Gallery additions and photography swaps',
+        'Booking and enquiry form monitoring',
+        'Hosting, SSL, backups and uptime monitoring',
+      ],
+    },
+    serviceLinks: [
+      { label: 'Web Design', to: '/services/web-design' },
+      { label: 'Hosting & Maintenance', to: '/services/hosting-and-maintenance' },
+    ],
+  },
+  {
+    slug: 'pmm-awards',
+    category: 'Events & Media',
+    title: 'Pakistani Music & Media Awards',
+    client: 'PMM Awards',
+    location: 'Symphony Hall, Birmingham',
+    url: 'https://pmmawards.org',
+    domain: 'pmmawards.org',
+    body: 'A high-pressure awards site handling public voting, ticket sales and a live countdown for a Symphony Hall event.',
+    image: '/portfolio/pmmawards.jpg',
+    tech: ['WordPress', 'Elementor', 'Public Voting', 'Ticketing', 'Live Countdown'],
+    facts: [
+      { value: '2', label: 'Award-year editions' },
+      { value: 'WordPress', label: 'Built on' },
+      { value: 'Managed', label: 'Hosting & care' },
+    ],
+    screenshotNotes:
+      'A dark header carries the metallic PMMA 2025 badge on the left and a magenta PMMA 2024 archive button on the right. The hero is a dimmed night photograph of Symphony Hall with “Symphony Hall” in gold above the headline “Pakistani Music & Media Awards 2025”, the year picked out in cyan. A short paragraph gives the venue and the date, and two dashed-outline buttons sit side by side — an orange-red Vote Now and a magenta Buy Ticket Now. A four-cell countdown in days, hours, minutes and seconds runs below.',
+    challenge:
+      'An awards ceremony has to do three separate jobs from one page under a hard deadline: collect public votes at volume, sell tickets, and keep an audience warm until the night. Traffic is spiky — quiet for weeks, then enormous the moment voting opens or a nominee shares the link.',
+    solution:
+      'We built the landing page around two equally weighted actions — Vote Now and Buy Ticket Now — rather than making one secondary, added a live countdown to create urgency, and kept the previous year’s edition online behind its own button so past winners stay searchable. We host it on infrastructure sized for voting-window spikes and watch it through the campaign.',
+    results: [
+      'Voting and ticketing given equal billing in the hero',
+      'Live countdown to the ceremony date on the landing page',
+      'Previous award year kept online as a browsable archive',
+      'Hosting monitored through voting windows and announcement spikes',
+    ],
+    care: {
+      title: 'What we handle day to day',
+      points: [
+        'Nominee, category and voting window updates',
+        'Ticketing links and countdown configuration',
+        'Traffic monitoring across voting and announcement spikes',
+        'Hosting, SSL, backups and yearly edition rollover',
+      ],
+    },
+    serviceLinks: [
+      { label: 'Web Development', to: '/services/web-development' },
+      { label: 'Hosting & Maintenance', to: '/services/hosting-and-maintenance' },
     ],
   },
 ]
 
 // The three projects featured on the home page.
-export const featuredWork = projects.slice(0, 3)
+const featuredSlugs = ['istanbul-restaurant-birmingham', 'pmm-awards', 'buynow-uk']
+export const featuredWork = featuredSlugs.map((s) => projects.find((p) => p.slug === s))
 
 export const testimonials = [
   {

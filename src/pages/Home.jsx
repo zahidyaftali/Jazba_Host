@@ -83,7 +83,7 @@ export default function Home() {
         <SectionHead
           eyebrow="Featured Work"
           title="Projects that deliver."
-          lead="Real builds, real numbers — a snapshot of what we ship for our clients."
+          lead="Live client sites we designed, built, host and maintain — a snapshot of the work."
         />
         <Reveal variants={stagger} className="grid grid-3">
           {featuredWork.map((w) => (
@@ -100,7 +100,7 @@ export default function Home() {
                     {w.tech.slice(0, 4).map((t) => <span className="tech-chip" key={t}>{t}</span>)}
                   </div>
                   <div className="work-metrics">
-                    {w.metrics.map((m) => (
+                    {w.facts.map((m) => (
                       <div key={m.label}>
                         <div className="metric-v">{m.value}</div>
                         <div className="metric-l">{m.label}</div>

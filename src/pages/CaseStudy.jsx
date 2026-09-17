@@ -20,16 +20,19 @@ export default function CaseStudy() {
         crumbs={<><Link to="/">Home</Link> / <Link to="/portfolio">Portfolio</Link> / {project.title}</>}
         eyebrow={project.category}
         title={project.title}
-        subtitle={`${project.client} · ${project.location} · ${project.year}`}
+        subtitle={`${project.client} · ${project.location}`}
         lead={project.body}
       >
+        <a href={project.url} target="_blank" rel="noopener noreferrer" className="btn btn-light">
+          Visit {project.domain} ↗
+        </a>
         <Link to="/contact" className="btn btn-dark">Start a Project Like This</Link>
       </PageHero>
 
       {/* 2 — HEADLINE METRICS */}
       <Reveal variants={stagger} className="stat-strip">
         <div className="container stat-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
-          {project.metrics.map((m) => (
+          {project.facts.map((m) => (
             <motion.div key={m.label} variants={fadeUp} className="stat-cell">
               <div className="stat-value display-md">{m.value}</div>
               <div className="stat-label label-uppercase">{m.label}</div>
@@ -38,10 +41,17 @@ export default function CaseStudy() {
         </div>
       </Reveal>
 
-      {/* 3 — HERO IMAGE */}
+      {/* 3 — LIVE SCREENSHOT + WHAT'S ON THE PAGE */}
       <section className="section-sm container">
         <Reveal variants={scaleIn} className="cs-hero-img">
-          <img src={project.image} alt={project.title} />
+          <img src={project.image} alt={`Homepage of ${project.domain}`} />
+        </Reveal>
+        <Reveal variants={fadeUp} className="cs-shot-note">
+          <div className="eyebrow">What you&rsquo;re looking at</div>
+          <p className="body-md">{project.screenshotNotes}</p>
+          <a href={project.url} target="_blank" rel="noopener noreferrer" className="link-cta">
+            See it live at {project.domain} ↗
+          </a>
         </Reveal>
       </section>
 
@@ -77,7 +87,7 @@ export default function CaseStudy() {
         </div>
       </section>
 
-      {/* 5 — RESULTS + CLIENT QUOTE */}
+      {/* 5 — RESULTS + ONGOING CARE */}
       <section className="section band-soft">
         <div className="container">
           <SectionHead eyebrow="The results" title="What changed." />
@@ -89,13 +99,15 @@ export default function CaseStudy() {
                 ))}
               </motion.ul>
             </Reveal>
-            <Reveal variants={scaleIn} className="quote-card">
-              <div className="quote-stars" aria-label="5 out of 5 stars">{'★'.repeat(5)}</div>
-              <blockquote>&ldquo;{project.quote.text}&rdquo;</blockquote>
-              <div className="quote-footer">
-                <div className="quote-name">{project.quote.name}</div>
-                <div className="quote-role">{project.quote.role}</div>
-              </div>
+            <Reveal variants={scaleIn} className="quote-card care-card">
+              <div className="eyebrow">Still on our books</div>
+              <h3 className="title-lg" style={{ marginTop: 12 }}>{project.care.title}</h3>
+              <ul className="care-list">
+                {project.care.points.map((c) => <li key={c}>{c}</li>)}
+              </ul>
+              <Link to="/services/hosting-and-maintenance" className="link-cta">
+                How our hosting &amp; care works <Chevron />
+              </Link>
             </Reveal>
           </div>
         </div>
