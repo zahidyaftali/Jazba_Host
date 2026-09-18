@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './pages.css'
 import { pageTransition, fadeUp, stagger } from '../components/motion.js'
-import { Eyebrow } from '../components/Shared.jsx'
 import Seo from '../components/Seo.jsx'
 
 // Launch target — update this date to move the countdown.
@@ -54,7 +53,6 @@ export default function ComingSoon() {
             </motion.div>
 
             <motion.div variants={fadeUp} style={{ marginTop: 48 }}>
-              <Eyebrow onDark>Launching soon</Eyebrow>
             </motion.div>
 
             <motion.h1 variants={fadeUp} className="display-xxl coming-title">

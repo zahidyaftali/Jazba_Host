@@ -23,7 +23,6 @@ export default function Services() {
       {/* HERO — orange mesh opener */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / Services</>}
-        eyebrow="Our Services"
         title="Everything you need to go live."
         lead="Three core services and a stack of smart capabilities — so you can build any type of website for any kind of business, and keep it running fast and secure."
       />
@@ -102,7 +101,7 @@ export default function Services() {
             <div>
               <div className="eyebrow" style={{ color: 'var(--on-dark-soft)' }}>Keep it online</div>
               <h2 className="display-md" style={{ color: 'var(--on-dark)', marginTop: 12 }}>
-                Managed hosting from £3.99/mo.
+                Managed hosting from £8/mo.
               </h2>
               <p className="body-md" style={{ color: 'var(--on-dark-soft)', marginTop: 12, maxWidth: 560 }}>
                 Fast SSD servers, free SSL, daily backups and a 99.9% uptime guarantee — plus a free

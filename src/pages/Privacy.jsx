@@ -82,7 +82,6 @@ export default function Privacy() {
       <Seo page="privacy" />
       <PageHero
         crumbs={<><Link to="/">Home</Link> / Privacy Policy</>}
-        eyebrow="Legal"
         title="Privacy Policy"
         lead="How Jazba Host collects, uses and protects your personal information, in line with UK GDPR. Last updated: 7 July 2026."
       />

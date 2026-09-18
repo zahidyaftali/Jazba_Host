@@ -119,7 +119,7 @@ export const services = [
     intro:
       "Hosting is where most agencies stop — it's where we shine. Fast UK-based hosting with free SSL and daily backups, plus real maintenance: software updates, security patches, content changes and a team that answers when you call.",
     audiences: [
-      { title: 'Startups', body: 'Affordable plans from £3.99/mo with everything included — SSL, backups, email and support.' },
+      { title: 'Startups', body: 'Affordable plans from £8/mo with everything included — SSL, backups, email and support.' },
       { title: 'Growing businesses', body: 'Priority support and hands-on maintenance so your website stays fast, secure and up to date.' },
       { title: 'Large organisations', body: 'Dedicated resources, staging environments and SLAs for business-critical websites.' },
     ],
@@ -135,7 +135,7 @@ export const services = [
     useCasesLead: "Your website is never 'done' — we keep it healthy month after month.",
     useCases: ['Software updates', 'Security patches', 'Daily backups', 'Uptime monitoring', 'Content updates', 'Speed optimisation', 'Email & domains', 'Malware protection', 'Free migration', 'Monthly reports'],
     audiencesTitle: 'Care plans for every size of website.',
-    audiencesLead: 'From a £3.99/mo starter site to business-critical platforms with SLAs — every site gets looked after.',
+    audiencesLead: 'From an £8/mo brochure site to business-critical platforms with SLAs — every site gets looked after.',
     toolsTitle: 'The stack that keeps you online.',
     toolsLead: 'Enterprise-grade infrastructure and monitoring behind every plan — even the smallest one.',
     tools: [

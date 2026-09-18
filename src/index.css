@@ -65,6 +65,7 @@
 
   /* Layout */
   --container: 1280px;
+  --gutter: 32px;            /* page side padding; see Responsive */
 
   /* Families */
   --font-display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
@@ -116,7 +117,7 @@ code, pre, kbd { font-family: var(--font-mono); }
 .code-sm   { font-family: var(--font-mono); font-weight: 400; font-size: 11px; line-height: 1.5; }
 
 /* ---------- Layout helpers ---------- */
-.container { max-width: var(--container); margin: 0 auto; padding-left: var(--xl); padding-right: var(--xl); width: 100%; }
+.container { max-width: var(--container); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); width: 100%; }
 .section { padding-top: var(--section); padding-bottom: var(--section); }
 .section-sm { padding-top: var(--xxl); padding-bottom: var(--xxl); }
 .band-dark { background: var(--surface-dark); color: var(--on-dark); }
@@ -228,13 +229,22 @@ code, pre, kbd { font-family: var(--font-mono); }
   background: var(--success); color: var(--on-dark);
 }
 
-/* ---------- Responsive ---------- */
+/* ---------- Responsive ----------
+   `--gutter` is the page's side padding. It grows relative to the
+   viewport on small screens so content stops hugging the bezel. */
 @media (max-width: 1024px) {
+  :root { --section: 80px; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  :root { --section: 64px; }
-  .container { padding-left: var(--lg); padding-right: var(--lg); }
+  /* Wider than the desktop-relative 24px this used to be. Card padding drops
+     at the same breakpoint (pages.css), so the text column still gets wider. */
+  :root { --gutter: 28px; --section: 64px; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .display-md { font-size: 26px; }
+  .body-lg { font-size: 17px; }
+}
+@media (max-width: 560px) {
+  .btn { padding: 0 20px; font-size: 15px; }
 }

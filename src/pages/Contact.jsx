@@ -42,7 +42,6 @@ export default function Contact() {
       {/* HERO — orange mesh opener */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / Contact</>}
-        eyebrow="Get in touch"
         title="Let's start your project."
         lead="Two offices, one dedicated team. Tell us what you need — a website, hosting, or the full package — and we'll come back fast with a clear plan."
       />

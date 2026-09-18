@@ -21,7 +21,6 @@ export default function About() {
       {/* HERO — orange mesh opener */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / About</>}
-        eyebrow="About Jazba Host"
         title="A complete web solution."
         lead="Part of Jazba Entertainment Ltd., we design, build and host websites for businesses of every shape — from a single landing page to a full ecommerce platform."
       />

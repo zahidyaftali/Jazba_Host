@@ -32,7 +32,6 @@ export default function ServiceDetail() {
       {/* 1 — HERO */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / <Link to="/services">Services</Link> / {service.title}</>}
-        eyebrow="Service"
         title={service.title}
         subtitle={service.tagline}
         lead={service.intro}

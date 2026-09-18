@@ -22,7 +22,7 @@
   padding-top: 24px; padding-bottom: 32px; border-top: 1px solid var(--divider-dark);
   color: var(--on-dark-soft); flex-wrap: wrap;
 }
-.footer-bottom-links { display: inline-flex; align-items: center; gap: 10px; }
+.footer-bottom-links { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .footer-bottom .dot { color: var(--divider-dark); }
 
 @media (max-width: 900px) {
@@ -30,4 +30,5 @@
 }
 @media (max-width: 560px) {
   .footer-grid { grid-template-columns: 1fr }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
 }

@@ -32,7 +32,6 @@ export default function CaseStudy() {
       {/* 1 — HERO */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / <Link to="/portfolio">Portfolio</Link> / {project.title}</>}
-        eyebrow={project.category}
         title={project.title}
         subtitle={`${project.client} · ${project.location}`}
         lead={project.body}
@@ -45,7 +44,7 @@ export default function CaseStudy() {
 
       {/* 2 — HEADLINE METRICS */}
       <Reveal variants={stagger} className="stat-strip">
-        <div className="container stat-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+        <div className="container stat-grid stat-grid-3">
           {project.facts.map((m) => (
             <motion.div key={m.label} variants={fadeUp} className="stat-cell">
               <div className="stat-value display-md">{m.value}</div>

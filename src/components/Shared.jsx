@@ -19,19 +19,14 @@ export function Eyebrow({ children, onDark }) {
 }
 
 // Page opener for secondary pages on the hero's orange mesh:
-// breadcrumb + eyebrow + display-xl + lead.
-export function PageHero({ crumbs, eyebrow, title, subtitle, lead, children }) {
+// breadcrumb + display-xl + optional subtitle, lead and buttons.
+export function PageHero({ crumbs, title, subtitle, lead, children }) {
   return (
     <section className="page-hero">
       <div className="container page-hero-inner">
         <motion.div variants={stagger} initial="hidden" animate="show">
           {crumbs && <motion.p variants={fadeUp} className="breadcrumb">{crumbs}</motion.p>}
-          {eyebrow && (
-            <motion.div variants={fadeUp} style={{ marginTop: crumbs ? 24 : 0 }}>
-              <Eyebrow onDark>{eyebrow}</Eyebrow>
-            </motion.div>
-          )}
-          <motion.h1 variants={fadeUp} className="display-xl" style={{ marginTop: 20 }}>{title}</motion.h1>
+          <motion.h1 variants={fadeUp} className="display-xl" style={{ marginTop: crumbs ? 28 : 0 }}>{title}</motion.h1>
           {subtitle && <motion.p variants={fadeUp} className="subtitle" style={{ marginTop: 16, color: 'var(--on-dark)' }}>{subtitle}</motion.p>}
           {lead && <motion.p variants={fadeUp} className="body-lg page-hero-lead">{lead}</motion.p>}
           {children && <motion.div variants={fadeUp} className="hero-actions" style={{ marginTop: 32 }}>{children}</motion.div>}

@@ -97,7 +97,7 @@ export default function Navbar() {
               </div>
               <aside className="mega-aside">
                 <div className="mega-aside-label">Keep it online</div>
-                <div className="title-md">Managed hosting from £3.99/mo.</div>
+                <div className="title-md">Managed hosting from £8/mo.</div>
                 <p className="body-sm" style={{ color: 'var(--muted)' }}>
                   Free SSL, daily backups and a 99.9% uptime guarantee on every plan.
                 </p>

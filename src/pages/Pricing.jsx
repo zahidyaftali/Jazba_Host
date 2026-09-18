@@ -34,7 +34,6 @@ export default function Pricing() {
       {/* HERO — cream opener */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / Pricing</>}
-        eyebrow="Pricing"
         title="Clear prices. No day rates."
         lead="Managed hosting from £8 a month, and fixed-price builds for websites, apps and AI chatbots. Freelance rates from a small team — not agency rates."
       >
@@ -148,7 +147,7 @@ export default function Pricing() {
             lead="Grab the perfect name — hundreds of extensions available, managed right alongside your hosting."
           />
           <Reveal variants={fadeUp}>
-            <div className="table-scroll" style={{ background: 'var(--surface-card)', border: '1px solid var(--hairline)', borderRadius: 'var(--r-md)', overflow: 'hidden' }}>
+            <div className="table-scroll">
               <table className="domain-table">
                 <caption className="sr-only">Domain registration and renewal prices by extension</caption>
                 <thead>

@@ -84,7 +84,6 @@ export default function Terms() {
       <Seo page="terms" />
       <PageHero
         crumbs={<><Link to="/">Home</Link> / Terms of Use</>}
-        eyebrow="Legal"
         title="Terms of Use"
         lead="The terms that apply when you use our website or engage Jazba Host for design, development, hosting or maintenance. Last updated: 7 July 2026."
       />

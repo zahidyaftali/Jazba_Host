@@ -20,7 +20,6 @@ export default function Portfolio() {
       {/* HERO */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / Portfolio</>}
-        eyebrow="Our Work"
         title="Work that works."
         lead="Every site below is live right now — designed and built by us, running on our hosting, and looked after by us every week. Charities, restaurants, salons, cleaning contractors, retail launches and awards nights."
       />
