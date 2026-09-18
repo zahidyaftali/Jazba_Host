@@ -22,7 +22,7 @@ export const pageSeo = {
     path: '/',
     title: 'Jazba Host | Web Design, Development & UK Hosting',
     description:
-      'We build, host and maintain websites for UK businesses. Fixed-price builds around 20% under agency rates, plus managed hosting from £8 a month.',
+      'We build, host and maintain websites for UK businesses. Fixed-price builds at freelance rates from £499, plus managed hosting from £8 a month.',
   },
   about: {
     path: '/about',
@@ -46,7 +46,7 @@ export const pageSeo = {
     path: '/pricing',
     title: 'Pricing | Hosting from £8/mo, Fixed-Price Builds',
     description:
-      'Managed UK hosting from £8 a month with 20% off annually, plus fixed-price websites, apps and AI chatbots priced under typical UK agency rates.',
+      'Managed UK hosting from £8 a month with 20% off annually, plus fixed-price websites from £499, apps from £1,999 and AI chatbots from £399.',
   },
   contact: {
     path: '/contact',
@@ -85,7 +85,7 @@ export const serviceSeo = {
   'web-development': {
     title: 'Web Development UK | Custom Websites Built Right',
     description:
-      'Custom websites, booking systems, portals and ecommerce builds for UK businesses. Fixed price, agreed before we start, hosted and maintained by us.',
+      'Custom websites, booking systems, portals and ecommerce builds for UK businesses. Fixed price from £499, agreed before we start and hosted by us.',
   },
   'web-design': {
     title: 'Web Design UK | Mobile-First Sites That Convert',
@@ -105,12 +105,12 @@ export const serviceSeo = {
   'app-development': {
     title: 'App Development UK | iOS & Android, Fixed Price',
     description:
-      'Cross-platform iOS and Android apps for bookings, ordering and loyalty, connected to your website. Fixed price from £7,200.',
+      'Cross-platform iOS and Android apps for bookings, ordering and loyalty, connected to your website. Fixed price from £1,999.',
   },
   'ai-chatbot': {
-    title: 'AI Chatbot Development UK | From £2,000 Fixed',
+    title: 'AI Chatbot Development UK | From £399 Fixed',
     description:
-      'An AI assistant trained on your business that answers questions, captures leads and books appointments 24/7. Fixed price from £2,000.',
+      'An AI assistant trained on your business that answers questions, captures leads and books appointments 24/7. Fixed price from £399.',
   },
 }
 

@@ -371,33 +371,33 @@
 .price-features li { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: 15px; color: var(--body); }
 .price-features .tick { color: var(--success); font-weight: 600; }
 
-/* Struck-through UK comparison above the one-off project price. */
-.price-compare { display: flex; align-items: baseline; gap: 8px; margin-top: 20px; }
-.price-compare .was {
-  font-family: var(--font-display); font-weight: 600; font-size: 20px;
-  color: var(--muted-soft); text-decoration: line-through;
-}
-.price-compare .was-label { font-size: 12px; color: var(--muted-soft); }
-.price-card.featured .price-compare .was,
-.price-card.featured .price-compare .was-label { color: var(--on-dark-soft); }
-.price-compare + .price-amount { margin-top: 6px; }
-
 /* "Custom pricing" replaces the number on the last card of each table. */
-/* Sits where the priced cards put their number, so the three cards line up:
-   .price-compare (20 margin + ~24 line) + 6 = 50 vs the default 24. */
-.price-amount-custom { align-items: baseline; margin-top: 50px; }
 .price-amount .num-custom {
   font-family: var(--font-display); font-weight: 700; font-size: 32px;
   line-height: 1.1; letter-spacing: -0.6px; color: var(--ink);
 }
 .price-card.featured .price-amount .num-custom { color: var(--on-dark); }
 
-/* Small print under the price: annual total, saving, timeline. */
+/* Small print under the price: annual total, or fixed-price + timeline. */
 .price-note {
   font-size: 13px; line-height: 1.45; color: var(--muted);
   margin: -12px 0 20px; min-height: 38px;
 }
 .price-card.featured .price-note { color: var(--on-dark-soft); }
+
+/* Feature lists collapse to six items so every card in a row is the same
+   height; this toggle reveals the rest. */
+.price-more {
+  display: inline-flex; align-items: center; gap: 6px; align-self: flex-start;
+  margin: -14px 0 24px; padding: 0; border: 0; background: none; cursor: pointer;
+  font-family: var(--font-body); font-weight: 600; font-size: 14px;
+  color: var(--primary);
+}
+.price-more:hover { text-decoration: underline; }
+.price-more:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--ring-focus); border-radius: 4px; }
+.price-more-chev { flex: 0 0 auto; transition: transform .2s ease; }
+.price-more-chev.open { transform: rotate(180deg); }
+.price-card.featured .price-more { color: var(--hero-pink); }
 
 /* ---------- Domain table ---------- */
 .domain-table { width: 100%; border-collapse: collapse; }

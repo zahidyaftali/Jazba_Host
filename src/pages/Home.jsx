@@ -5,6 +5,7 @@ import './pages.css'
 import { homeServices, featuredWork, testimonials, homeFaqs, hostingPlans, process } from '../data.js'
 import { pageTransition, fadeUp, stagger, scaleIn } from '../components/motion.js'
 import Reveal from '../components/Reveal.jsx'
+import PriceCard from '../components/PriceCard.jsx'
 import Seo from '../components/Seo.jsx'
 import { SectionHead, StatStrip, Chevron } from '../components/Shared.jsx'
 
@@ -38,9 +39,9 @@ export default function Home() {
           areaServed: [{ '@type': 'Country', name: 'United Kingdom' }],
           makesOffer: [
             { '@type': 'Offer', name: 'Managed Hosting', priceCurrency: 'GBP', price: '8', description: 'Managed UK hosting per month' },
-            { '@type': 'Offer', name: 'Website Development', priceCurrency: 'GBP', price: '1400', description: 'Fixed-price 5-page website' },
-            { '@type': 'Offer', name: 'App Development', priceCurrency: 'GBP', price: '7200', description: 'Fixed-price cross-platform app' },
-            { '@type': 'Offer', name: 'AI Chatbot', priceCurrency: 'GBP', price: '2000', description: 'Fixed-price AI chatbot build' },
+            { '@type': 'Offer', name: 'Website Development', priceCurrency: 'GBP', price: '499', description: 'Fixed-price 5-page website' },
+            { '@type': 'Offer', name: 'App Development', priceCurrency: 'GBP', price: '1999', description: 'Fixed-price cross-platform app' },
+            { '@type': 'Offer', name: 'AI Chatbot', priceCurrency: 'GBP', price: '399', description: 'Fixed-price AI chatbot build' },
           ],
         }}
       />
@@ -189,22 +190,21 @@ export default function Home() {
         />
         <Reveal variants={stagger} className="price-grid">
           {hostingPlans.map((p) => (
-            <motion.div variants={scaleIn} key={p.name} className={`price-card ${p.featured ? 'featured' : ''}`}>
-              {p.featured && <span className="price-badge">Most Popular</span>}
-              <div className="price-name">{p.name}</div>
-              <div className="price-tag">{p.tagline}</div>
-              <div className="price-amount">
-                <span className="cur">£</span>
-                <span className="num">{p.price}</span>
-                <span className="per">/ month</span>
-              </div>
-              <ul className="price-features">
-                {p.features.map((f) => (
-                  <li key={f}><span className="tick">✓</span>{f}</li>
-                ))}
-              </ul>
-              <Link to="/pricing" className={`btn ${p.featured ? 'btn-primary' : 'btn-secondary'}`}>Get Started</Link>
-            </motion.div>
+            <PriceCard
+              key={p.name}
+              plan={p}
+              badge={p.featured ? 'Most Popular' : null}
+              ctaLabel="Get Started"
+              ctaTo="/pricing"
+              amount={
+                <div className="price-amount">
+                  <span className="cur">£</span>
+                  <span className="num">{p.price}</span>
+                  <span className="per">/ month</span>
+                </div>
+              }
+              note={`£${(p.price * 12 * 0.8).toFixed(2)} a year if you pay annually — 20% off.`}
+            />
           ))}
         </Reveal>
         <Reveal variants={fadeUp} className="text-center" style={{ marginTop: 40 }}>

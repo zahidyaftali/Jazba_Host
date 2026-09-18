@@ -291,12 +291,9 @@ export const capabilities = [
 // Hosting is recurring (monthly, or annual billed as one total
 // with 20% off). Everything else is a fixed one-off project fee.
 //
-// `ukPrice` is the typical UK agency rate for the same scope, used
-// as the struck-through comparison. Our price is exactly 20% under
-// it — we are a newer studio and price to win the work.
-// Benchmarks (Sept 2026): brochure sites £1.5k–£3.5k regional
-// agency, ecommerce £3k–£15k, simple apps £8k–£30k, small-business
-// AI chatbots £1.5k–£12k.
+// Project prices are set at experienced-freelancer level, not agency
+// level: a small Pakistan-based team working for UK clients, with no
+// account managers or city-centre office to pay for.
 // ============================================================
 
 // Annual billing discount, applied across every recurring plan.
@@ -370,8 +367,7 @@ export const hostingPlans = [
 export const webDevPlans = [
   {
     name: 'Launch',
-    price: 1400,
-    ukPrice: 1750,
+    price: 499,
     tagline: 'A sharp 5-page site that makes a small business look established from day one.',
     featured: false,
     timeline: '2–3 weeks',
@@ -390,8 +386,7 @@ export const webDevPlans = [
   },
   {
     name: 'Growth',
-    price: 2800,
-    ukPrice: 3500,
+    price: 999,
     tagline: 'A bigger, content-managed site for businesses selling more than one thing.',
     featured: true,
     timeline: '4–6 weeks',
@@ -413,7 +408,6 @@ export const webDevPlans = [
   {
     name: 'Ecommerce & Bespoke',
     price: null,
-    ukPrice: null,
     tagline: 'Online stores, portals, membership sites and anything that needs building from scratch.',
     featured: false,
     timeline: 'timeline agreed at scoping',
@@ -436,8 +430,7 @@ export const webDevPlans = [
 export const appDevPlans = [
   {
     name: 'App Launch',
-    price: 7200,
-    ukPrice: 9000,
+    price: 1999,
     tagline: 'One cross-platform app that does one job properly — on iOS and Android.',
     featured: false,
     timeline: '6–8 weeks',
@@ -455,8 +448,7 @@ export const appDevPlans = [
   },
   {
     name: 'App Growth',
-    price: 14400,
-    ukPrice: 18000,
+    price: 3999,
     tagline: 'A full product with accounts, payments and a back office you control.',
     featured: true,
     timeline: '10–14 weeks',
@@ -477,7 +469,6 @@ export const appDevPlans = [
   {
     name: 'Custom Platform',
     price: null,
-    ukPrice: null,
     tagline: 'Multi-role platforms, live tracking, offline sync and anything regulated.',
     featured: false,
     timeline: 'timeline agreed at scoping',
@@ -498,8 +489,7 @@ export const appDevPlans = [
 export const chatbotPlans = [
   {
     name: 'Assist',
-    price: 2000,
-    ukPrice: 2500,
+    price: 399,
     tagline: 'Answers your most-asked questions on your site, day and night.',
     featured: false,
     timeline: '2–3 weeks',
@@ -516,8 +506,7 @@ export const chatbotPlans = [
   },
   {
     name: 'Convert',
-    price: 4800,
-    ukPrice: 6000,
+    price: 899,
     tagline: 'Books appointments, qualifies leads and answers in your customers’ languages.',
     featured: true,
     timeline: '4–6 weeks',
@@ -536,7 +525,6 @@ export const chatbotPlans = [
   {
     name: 'Custom AI',
     price: null,
-    ukPrice: null,
     tagline: 'Deeper automation wired into the systems your business already runs on.',
     featured: false,
     timeline: 'timeline agreed at scoping',
