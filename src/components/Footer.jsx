@@ -25,7 +25,7 @@ export default function Footer() {
             {services.map((s) => (
               <li key={s.slug}><Link className="footer-link" to={`/services/${s.slug}`}>{s.title}</Link></li>
             ))}
-            <li><Link className="footer-link" to="/pricing">Hosting Pricing</Link></li>
+            <li><Link className="footer-link" to="/pricing">Pricing</Link></li>
           </ul>
         </div>
 

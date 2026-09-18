@@ -2,41 +2,51 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './pages.css'
-import { hostingPlans, domainPricing } from '../data.js'
+import { hostingPlans, domainPricing, projectPricing, ANNUAL_DISCOUNT } from '../data.js'
 import { pageTransition, fadeUp, stagger, scaleIn } from '../components/motion.js'
 import Reveal from '../components/Reveal.jsx'
-import { SectionHead, CtaBand, PageHero } from '../components/Shared.jsx'
+import Seo from '../components/Seo.jsx'
+import { SectionHead, CtaBand, PageHero, Chevron } from '../components/Shared.jsx'
 
 const faqs = [
-  { q: 'Do I get a free domain?', a: 'Yes — every annual plan includes a free domain for the first year (.com, .co.uk and more). It renews at the standard rate after that.' },
-  { q: 'Is SSL really free?', a: 'Always. Every plan ships with a free SSL certificate, auto-renewed, so your site is secure and trusted out of the box.' },
-  { q: 'Can I upgrade later?', a: 'Absolutely. Start on Starter and move up whenever you grow — upgrades are instant and prorated, with zero downtime.' },
-  { q: 'What is the uptime guarantee?', a: 'We guarantee 99.9% uptime, backed by 24/7 monitoring and a real support team. If we ever miss it, you are covered by our SLA.' },
-  { q: 'Do you migrate my existing site?', a: 'Yes — free migration on Business and Enterprise plans. Our team moves your site over and checks everything before go-live.' },
+  { q: 'Is the project price really fixed?', a: 'Yes. We scope the work with you, agree a number, and that is what you pay. If you later ask for something outside that scope we price it separately and you decide — you will never get a surprise invoice at the end.' },
+  { q: 'Why are you cheaper than other UK agencies?', a: 'We are a newer studio and we would rather win the work than match the going rate. Same scope, same standards — we have simply priced roughly 20% under the typical UK agency quote, and we show you that comparison instead of hiding it.' },
+  { q: 'What do I actually pay up front?', a: 'A 40% deposit to book the work in, 30% at design sign-off and the final 30% before go-live. Hosting starts the month your site goes live, not before.' },
+  { q: 'Do I get a free domain?', a: 'Yes — every hosting plan includes a free domain for the first year (.com, .co.uk and more). It renews at the standard rate shown in the table below.' },
+  { q: 'Can I change hosting plan later?', a: 'Any time. Upgrades are instant and prorated with no downtime, and you can move back down again if a busy season passes.' },
+  { q: 'Do you take over a site someone else built?', a: 'Often, yes. Migration onto our hosting is free on Business and Enterprise. If the existing build needs fixing before we can support it, we will tell you what that costs before you commit.' },
+  { q: 'What happens after launch?', a: 'Launch support is included — 30 days on Launch and Assist, 90 days on Growth and Convert. After that, our hosting plans cover updates, backups, monitoring and small changes.' },
 ]
+
+const gbp = (n) => n.toLocaleString('en-GB')
 
 export default function Pricing() {
   const [billing, setBilling] = useState('monthly')
   const [openFaq, setOpenFaq] = useState(0)
 
-  const factor = billing === 'annual' ? 0.8 : 1 // 20% off annual
+  const annual = billing === 'annual'
 
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
+      <Seo page="pricing" />
+
       {/* HERO — cream opener */}
       <PageHero
-        crumbs={<><Link to="/">Home</Link> / Hosting Pricing</>}
-        eyebrow="Hosting & Domain"
-        title="Fast, secure hosting. Simple pricing."
-        lead="SSD-backed servers, free SSL, daily backups and a 99.9% uptime guarantee — plus a free domain for your first year. No hidden fees, ever."
-      />
+        crumbs={<><Link to="/">Home</Link> / Pricing</>}
+        eyebrow="Pricing"
+        title="Clear prices. No day rates."
+        lead="Managed hosting from £8 a month, and fixed-price builds for websites, apps and AI chatbots — each one priced around 20% under the typical UK agency quote."
+      >
+        <a href="#website-development" className="btn btn-light">Project Prices</a>
+        <Link to="/contact" className="btn btn-dark">Get a Free Quote</Link>
+      </PageHero>
 
-      {/* PLANS */}
-      <section className="section container">
+      {/* HOSTING PLANS */}
+      <section className="section container" id="hosting">
         <SectionHead
-          eyebrow="Hosting plans"
-          title="Choose your plan."
-          lead="Every plan includes free SSL, a free domain for year one, and 24/7 support."
+          eyebrow="Hosting & maintenance"
+          title="Hosting, handled."
+          lead="Every plan includes free SSL, a free domain for year one, daily backups and the updates done for you."
           center
         />
 
@@ -52,27 +62,110 @@ export default function Pricing() {
         </Reveal>
 
         <Reveal variants={stagger} className="price-grid">
-          {hostingPlans.map((p) => (
-            <motion.div variants={scaleIn} key={p.name} className={`price-card ${p.featured ? 'featured' : ''}`}>
-              {p.featured && <span className="price-badge">Most Popular</span>}
-              <div className="price-name">{p.name}</div>
-              <div className="price-tag">{p.tagline}</div>
-              <div className="price-amount">
-                <span className="cur">£</span>
-                <span className="num">{(p.price * factor).toFixed(2)}</span>
-                <span className="per">/ mo</span>
-              </div>
-              <ul className="price-features">
-                {p.features.map((f) => (
-                  <li key={f}><span className="tick">✓</span>{f}</li>
-                ))}
-              </ul>
-              <Link to="/contact" className={`btn ${p.featured ? 'btn-primary' : 'btn-secondary'}`}>Choose {p.name}</Link>
-            </motion.div>
-          ))}
+          {hostingPlans.map((p) => {
+            const yearTotal = p.price * 12 * (1 - ANNUAL_DISCOUNT)
+            const fullYear = p.price * 12
+            return (
+              <motion.div variants={scaleIn} key={p.name} className={`price-card ${p.featured ? 'featured' : ''}`}>
+                {p.featured && <span className="price-badge">Most Popular</span>}
+                <div className="price-name">{p.name}</div>
+                <div className="price-tag">{p.tagline}</div>
+                <div className="price-amount">
+                  <span className="cur">£</span>
+                  <span className="num">{annual ? yearTotal.toFixed(2) : p.price}</span>
+                  <span className="per">{annual ? 'total / year' : '/ month'}</span>
+                </div>
+                <div className="price-note">
+                  {annual
+                    ? <>Billed as one payment of £{yearTotal.toFixed(2)} — you save £{(fullYear - yearTotal).toFixed(2)} a year.</>
+                    : <>£{(p.price * 12).toFixed(2)} a year billed monthly · switch to annual and pay £{yearTotal.toFixed(2)}.</>}
+                </div>
+                <ul className="price-features">
+                  {p.features.map((f) => (
+                    <li key={f}><span className="tick">✓</span>{f}</li>
+                  ))}
+                </ul>
+                <Link to="/contact" className={`btn ${p.featured ? 'btn-primary' : 'btn-secondary'}`}>Choose {p.name}</Link>
+              </motion.div>
+            )
+          })}
         </Reveal>
-        <Reveal variants={fadeUp} className="text-center" >
-          <p className="caption" style={{ marginTop: 24 }}>All prices exclude VAT. Annual billing shown as monthly equivalent.</p>
+        <Reveal variants={fadeUp} className="text-center">
+          <p className="caption" style={{ marginTop: 24 }}>All prices exclude VAT. Annual plans are billed once as the total shown.</p>
+        </Reveal>
+      </section>
+
+      {/* PROJECT PRICING — website, app, chatbot. One-off fees, not monthly. */}
+      {projectPricing.map((group, gi) => (
+        <section
+          key={group.id}
+          id={group.id}
+          className={gi % 2 === 0 ? 'section band-soft' : 'section'}
+        >
+          <div className="container">
+            <SectionHead eyebrow={group.eyebrow} title={group.title} lead={group.lead} center />
+            <Reveal variants={stagger} className="price-grid">
+              {group.plans.map((p) => (
+                <motion.div variants={scaleIn} key={p.name} className={`price-card ${p.featured ? 'featured' : ''}`}>
+                  {p.featured && <span className="price-badge">Best Value</span>}
+                  <div className="price-name">{p.name}</div>
+                  <div className="price-tag">{p.tagline}</div>
+
+                  {p.price === null ? (
+                    <div className="price-amount price-amount-custom">
+                      <span className="num-custom">Custom pricing</span>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="price-compare">
+                        <span className="was">£{gbp(p.ukPrice)}</span>
+                        <span className="was-label">typical UK agency</span>
+                      </div>
+                      <div className="price-amount">
+                        <span className="cur">£</span>
+                        <span className="num">{gbp(p.price)}</span>
+                        <span className="per">one-off</span>
+                      </div>
+                    </>
+                  )}
+
+                  <div className="price-note">
+                    {p.price === null
+                      ? <>Scoped and quoted for what you actually need · {p.timeline}</>
+                      : <>You save £{gbp(p.ukPrice - p.price)} · {p.timeline}</>}
+                  </div>
+
+                  <ul className="price-features">
+                    {p.features.map((f) => (
+                      <li key={f}><span className="tick">✓</span>{f}</li>
+                    ))}
+                  </ul>
+                  <Link to="/contact" className={`btn ${p.featured ? 'btn-primary' : 'btn-secondary'}`}>
+                    {p.price === null ? 'Get a Custom Quote' : `Start with ${p.name}`}
+                  </Link>
+                </motion.div>
+              ))}
+            </Reveal>
+            <Reveal variants={fadeUp} className="text-center" style={{ marginTop: 32 }}>
+              <Link to={group.serviceTo} className="link-cta">
+                What&rsquo;s involved in {group.eyebrow.toLowerCase()} <Chevron />
+              </Link>
+            </Reveal>
+          </div>
+        </section>
+      ))}
+
+      {/* HOW THE COMPARISON WORKS — keeps the 20% claim honest */}
+      <section className="section-sm container">
+        <Reveal variants={fadeUp} className="cs-shot-note">
+          <div className="eyebrow">About the comparison</div>
+          <p className="body-md">
+            The struck-through figure on each card is the typical UK agency quote for the same scope,
+            taken from published 2026 cost guides — roughly £1,500–£3,500 for a small business website,
+            £8,000–£30,000 for a simple app and £1,500–£12,000 for a small business AI chatbot. Our
+            price is 20% under that. We are a newer studio, and we would rather win the work than match
+            the going rate.
+          </p>
         </Reveal>
       </section>
 
@@ -87,8 +180,9 @@ export default function Pricing() {
           <Reveal variants={fadeUp}>
             <div className="table-scroll" style={{ background: 'var(--surface-card)', border: '1px solid var(--hairline)', borderRadius: 'var(--r-md)', overflow: 'hidden' }}>
               <table className="domain-table">
+                <caption className="sr-only">Domain registration and renewal prices by extension</caption>
                 <thead>
-                  <tr><th>Extension</th><th>Register (1st year)</th><th>Renewal</th><th></th></tr>
+                  <tr><th scope="col">Extension</th><th scope="col">Register (1st year)</th><th scope="col">Renewal</th><th scope="col"><span className="sr-only">Action</span></th></tr>
                 </thead>
                 <tbody>
                   {domainPricing.map((d) => (
@@ -108,7 +202,7 @@ export default function Pricing() {
 
       {/* INCLUDED FEATURES — light */}
       <section className="section container">
-        <SectionHead eyebrow="Every plan includes" title="More than just space on a server." center />
+        <SectionHead eyebrow="Every hosting plan includes" title="More than just space on a server." center />
         <Reveal variants={stagger} className="grid grid-4">
           {[
             { t: 'Free SSL', b: 'HTTPS on every site, auto-renewed.' },
@@ -116,12 +210,12 @@ export default function Pricing() {
             { t: 'Global CDN', b: 'Fast load times, everywhere.' },
             { t: '99.9% Uptime', b: 'SLA-backed, always monitored.' },
             { t: 'Free Domain', b: 'On us for your first year.' },
-            { t: 'Free SSD', b: 'Solid-state speed as standard.' },
-            { t: '24/7 Support', b: 'Real people, any time zone.' },
-            { t: 'One-Click Apps', b: 'WordPress & more, instantly.' },
+            { t: 'NVMe Storage', b: 'Solid-state speed as standard.' },
+            { t: 'Updates Done', b: 'Core and plugins kept current.' },
+            { t: 'Real Support', b: 'People who know your site.' },
           ].map((f) => (
             <motion.div variants={fadeUp} key={f.t} className="value-card">
-              <h4 className="title-md">{f.t}</h4>
+              <h3 className="title-md">{f.t}</h3>
               <p className="body-sm" style={{ color: 'var(--muted)' }}>{f.b}</p>
             </motion.div>
           ))}
@@ -131,7 +225,7 @@ export default function Pricing() {
       {/* FAQ — soft band */}
       <section className="section band-soft">
         <div className="container" style={{ maxWidth: 860 }}>
-          <SectionHead eyebrow="Questions" title="Hosting FAQ." center />
+          <SectionHead eyebrow="Questions" title="Pricing FAQ." center />
           <Reveal variants={stagger} className="faq-list">
             {faqs.map((f, i) => (
               <motion.div variants={fadeUp} key={f.q} className="faq-item">
@@ -153,9 +247,9 @@ export default function Pricing() {
       </section>
 
       <CtaBand
-        title="Need something bigger? We do custom too."
-        text="Dedicated servers, high-traffic ecommerce, bespoke infrastructure — talk to our team."
-        primaryLabel="Talk to Sales"
+        title="Not sure which one you need?"
+        text="Tell us what the business actually needs to do and we will point you at the smallest thing that does it — free consultation, no pressure."
+        primaryLabel="Get a Free Quote"
         secondaryLabel="Our Services"
         secondaryTo="/services"
       />

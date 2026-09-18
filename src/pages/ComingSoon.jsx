@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import './pages.css'
 import { pageTransition, fadeUp, stagger } from '../components/motion.js'
 import { Eyebrow } from '../components/Shared.jsx'
+import Seo from '../components/Seo.jsx'
 
 // Launch target — update this date to move the countdown.
 const LAUNCH_DATE = new Date('2026-10-01T09:00:00Z')
@@ -41,6 +42,7 @@ export default function ComingSoon() {
 
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
+      <Seo page="comingSoon" />
       <section className="coming">
         <div className="container coming-inner">
           <motion.div variants={stagger} initial="hidden" animate="show">

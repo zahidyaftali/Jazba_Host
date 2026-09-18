@@ -5,6 +5,7 @@ import './pages.css'
 import { homeServices, featuredWork, testimonials, homeFaqs, hostingPlans, process } from '../data.js'
 import { pageTransition, fadeUp, stagger, scaleIn } from '../components/motion.js'
 import Reveal from '../components/Reveal.jsx'
+import Seo from '../components/Seo.jsx'
 import { SectionHead, StatStrip, Chevron } from '../components/Shared.jsx'
 
 export default function Home() {
@@ -12,6 +13,37 @@ export default function Home() {
 
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
+      <Seo
+        page="home"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'ProfessionalService',
+          '@id': 'https://jazbahost.com/#organization',
+          name: 'Jazba Host',
+          url: 'https://jazbahost.com',
+          logo: 'https://jazbahost.com/favicon.svg',
+          image: 'https://jazbahost.com/og-image.jpg',
+          description:
+            'Web design, development, managed UK hosting, app development and AI chatbots for businesses across the UK.',
+          telephone: '+44-333-5777-014',
+          email: 'info@jazbaentertainment.com',
+          priceRange: '££',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '16 Grosvenor Road, Birchfield',
+            addressLocality: 'Birmingham',
+            postalCode: 'B20 3NP',
+            addressCountry: 'GB',
+          },
+          areaServed: [{ '@type': 'Country', name: 'United Kingdom' }],
+          makesOffer: [
+            { '@type': 'Offer', name: 'Managed Hosting', priceCurrency: 'GBP', price: '8', description: 'Managed UK hosting per month' },
+            { '@type': 'Offer', name: 'Website Development', priceCurrency: 'GBP', price: '1400', description: 'Fixed-price 5-page website' },
+            { '@type': 'Offer', name: 'App Development', priceCurrency: 'GBP', price: '7200', description: 'Fixed-price cross-platform app' },
+            { '@type': 'Offer', name: 'AI Chatbot', priceCurrency: 'GBP', price: '2000', description: 'Fixed-price AI chatbot build' },
+          ],
+        }}
+      />
       {/* HERO — full-bleed orange band with atmospheric mesh */}
       <section className="home-hero">
         <div className="container home-hero-inner">
@@ -90,7 +122,7 @@ export default function Home() {
             <motion.div variants={scaleIn} key={w.slug} style={{ height: '100%' }}>
               <Link to={`/portfolio/${w.slug}`} className="work-card">
                 <div className="work-photo">
-                  <img src={w.image} alt={w.title} loading="lazy" />
+                  <img src={w.image} alt={`Homepage of ${w.domain} — ${w.title}`} loading="lazy" width="1200" height="675" />
                   <span className="work-cat">{w.category}</span>
                 </div>
                 <div className="work-body">
@@ -120,7 +152,12 @@ export default function Home() {
       {/* TESTIMONIALS — bone band */}
       <section className="section band-soft">
         <div className="container">
-          <SectionHead title="What Our Clients Say" center />
+          <SectionHead
+            eyebrow="Client feedback"
+            title="What Our Clients Say"
+            lead="Every quote below comes from a live project you can open and look at yourself."
+            center
+          />
           <Reveal variants={stagger} className="grid grid-3">
             {testimonials.map((t) => (
               <motion.div variants={fadeUp} key={t.name} className="quote-card">
@@ -130,6 +167,11 @@ export default function Home() {
                   <div className="quote-name">{t.name}</div>
                   <div className="quote-role">{t.role}</div>
                   <div className="quote-loc">{t.location}</div>
+                  {t.slug && (
+                    <Link to={`/portfolio/${t.slug}`} className="link-cta" style={{ marginTop: 12 }}>
+                      See the project <Chevron />
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -142,7 +184,7 @@ export default function Home() {
         <SectionHead
           eyebrow="Hosting"
           title="Reliable hosting, built for business."
-          lead="Fast, secure UK-based hosting with free SSL, daily backups, and expert support included in every plan."
+          lead="Fast, secure UK hosting with free SSL, daily backups and the updates handled for you. From £8 a month, or 20% off when you pay yearly."
           center
         />
         <Reveal variants={stagger} className="price-grid">
@@ -153,7 +195,7 @@ export default function Home() {
               <div className="price-tag">{p.tagline}</div>
               <div className="price-amount">
                 <span className="cur">£</span>
-                <span className="num">{p.price.toFixed(2)}</span>
+                <span className="num">{p.price}</span>
                 <span className="per">/ month</span>
               </div>
               <ul className="price-features">

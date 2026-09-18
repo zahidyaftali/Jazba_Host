@@ -4,6 +4,7 @@ import './pages.css'
 import { projects } from '../data.js'
 import { pageTransition, fadeUp, stagger, scaleIn } from '../components/motion.js'
 import Reveal from '../components/Reveal.jsx'
+import Seo from '../components/Seo.jsx'
 import { SectionHead, CtaBand, PageHero, Eyebrow, Chevron } from '../components/Shared.jsx'
 
 export default function CaseStudy() {
@@ -15,6 +16,19 @@ export default function CaseStudy() {
 
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
+      <Seo
+        project={project.slug}
+        image={project.image}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'CreativeWork',
+          name: project.title,
+          about: project.client,
+          url: project.url,
+          image: `https://jazbahost.com${project.image}`,
+          creator: { '@type': 'Organization', name: 'Jazba Host', url: 'https://jazbahost.com' },
+        }}
+      />
       {/* 1 — HERO */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / <Link to="/portfolio">Portfolio</Link> / {project.title}</>}
@@ -44,7 +58,7 @@ export default function CaseStudy() {
       {/* 3 — LIVE SCREENSHOT + WHAT'S ON THE PAGE */}
       <section className="section-sm container">
         <Reveal variants={scaleIn} className="cs-hero-img">
-          <img src={project.image} alt={`Homepage of ${project.domain}`} />
+          <img src={project.image} alt={`Homepage of ${project.domain} — ${project.title} built by Jazba Host`} />
         </Reveal>
         <Reveal variants={fadeUp} className="cs-shot-note">
           <div className="eyebrow">What you&rsquo;re looking at</div>

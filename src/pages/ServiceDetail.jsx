@@ -4,6 +4,7 @@ import './pages.css'
 import { services } from '../data.js'
 import { pageTransition, fadeUp, stagger, scaleIn } from '../components/motion.js'
 import Reveal from '../components/Reveal.jsx'
+import Seo from '../components/Seo.jsx'
 import { SectionHead, CtaBand, PageHero, Chevron } from '../components/Shared.jsx'
 
 export default function ServiceDetail() {
@@ -16,6 +17,18 @@ export default function ServiceDetail() {
 
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
+      <Seo
+        service={service.slug}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: service.title,
+          serviceType: service.title,
+          provider: { '@type': 'Organization', name: 'Jazba Host', url: 'https://jazbahost.com' },
+          areaServed: 'GB',
+          description: service.tagline,
+        }}
+      />
       {/* 1 — HERO */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / <Link to="/services">Services</Link> / {service.title}</>}
@@ -25,7 +38,7 @@ export default function ServiceDetail() {
         lead={service.intro}
       >
         <Link to="/contact" className="btn btn-dark">Get a Free Quote</Link>
-        <Link to="/pricing" className="btn btn-light">Hosting Plans</Link>
+        <Link to="/pricing" className="btn btn-light">See Pricing</Link>
       </PageHero>
 
       {/* 2 — WHO IT'S FOR */}
@@ -117,7 +130,7 @@ export default function ServiceDetail() {
             {others.map((s) => (
               <motion.div variants={scaleIn} key={s.slug} style={{ height: '100%' }}>
                 <Link to={`/services/${s.slug}`} className="svc-card">
-                  <div className="card-photo" style={{ aspectRatio: '16 / 9' }}><img src={s.hero} alt={s.title} loading="lazy" /></div>
+                  <div className="card-photo" style={{ aspectRatio: '16 / 9' }}><img src={s.hero} alt={`${s.title} — ${s.tagline}`} loading="lazy" /></div>
                   <div className="svc-card-body">
                     <h3 className="title-md">{s.title}</h3>
                     <p className="body-sm" style={{ color: 'var(--muted)' }}>{s.tagline}</p>

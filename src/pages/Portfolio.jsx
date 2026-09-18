@@ -5,6 +5,7 @@ import './pages.css'
 import { projects } from '../data.js'
 import { pageTransition, fadeUp } from '../components/motion.js'
 import Reveal from '../components/Reveal.jsx'
+import Seo from '../components/Seo.jsx'
 import { CtaBand, PageHero, Chevron } from '../components/Shared.jsx'
 
 const categories = ['All', ...new Set(projects.map((p) => p.category))]
@@ -15,6 +16,7 @@ export default function Portfolio() {
 
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
+      <Seo page="portfolio" />
       {/* HERO */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / Portfolio</>}
@@ -47,7 +49,7 @@ export default function Portfolio() {
               >
                 <Link to={`/portfolio/${p.slug}`} className="work-card project-card">
                   <div className="work-photo">
-                    <img src={p.image} alt={p.title} loading="lazy" />
+                    <img src={p.image} alt={`Homepage of ${p.domain} — ${p.title}`} loading="lazy" width="1200" height="675" />
                     <span className="work-cat">{p.category}</span>
                   </div>
                   <div className="work-body">

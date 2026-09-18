@@ -9,7 +9,7 @@ const links = [
   { to: '/about', label: 'About' },
   { to: '/services', label: 'Services', mega: true },
   { to: '/portfolio', label: 'Portfolio' },
-  { to: '/pricing', label: 'Hosting Pricing' },
+  { to: '/pricing', label: 'Pricing' },
   { to: '/contact', label: 'Contact' },
 ]
 
@@ -101,7 +101,7 @@ export default function Navbar() {
                 <p className="body-sm" style={{ color: 'var(--muted)' }}>
                   Free SSL, daily backups and a 99.9% uptime guarantee on every plan.
                 </p>
-                <Link to="/pricing" className="btn btn-dark mega-aside-btn">View Hosting Pricing</Link>
+                <Link to="/pricing" className="btn btn-dark mega-aside-btn">View Pricing</Link>
                 <Link to="/services" className="link-cta">All services <span className="chev" aria-hidden>›</span></Link>
               </aside>
             </div>

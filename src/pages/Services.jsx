@@ -4,6 +4,7 @@ import './pages.css'
 import { services, capabilities, process } from '../data.js'
 import { pageTransition, fadeUp, stagger, scaleIn } from '../components/motion.js'
 import Reveal from '../components/Reveal.jsx'
+import Seo from '../components/Seo.jsx'
 import { SectionHead, CtaBand, PageHero, Chevron } from '../components/Shared.jsx'
 
 const serviceTags = {
@@ -18,6 +19,7 @@ const serviceTags = {
 export default function Services() {
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
+      <Seo page="services" />
       {/* HERO — orange mesh opener */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / Services</>}
@@ -46,7 +48,7 @@ export default function Services() {
               </motion.div>
               <motion.div variants={scaleIn} className="svc-row-media">
                 <Link to={`/services/${s.slug}`}>
-                  <img src={s.hero} alt={s.title} loading="lazy" />
+                  <img src={s.hero} alt={`${s.title} — ${s.tagline}`} loading="lazy" />
                 </Link>
               </motion.div>
             </Reveal>
@@ -107,7 +109,7 @@ export default function Services() {
                 domain for your first year.
               </p>
             </div>
-            <Link to="/pricing" className="btn btn-primary">View Hosting Pricing <Chevron /></Link>
+            <Link to="/pricing" className="btn btn-primary">View Pricing <Chevron /></Link>
           </div>
         </Reveal>
       </section>

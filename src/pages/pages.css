@@ -371,6 +371,34 @@
 .price-features li { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: 15px; color: var(--body); }
 .price-features .tick { color: var(--success); font-weight: 600; }
 
+/* Struck-through UK comparison above the one-off project price. */
+.price-compare { display: flex; align-items: baseline; gap: 8px; margin-top: 20px; }
+.price-compare .was {
+  font-family: var(--font-display); font-weight: 600; font-size: 20px;
+  color: var(--muted-soft); text-decoration: line-through;
+}
+.price-compare .was-label { font-size: 12px; color: var(--muted-soft); }
+.price-card.featured .price-compare .was,
+.price-card.featured .price-compare .was-label { color: var(--on-dark-soft); }
+.price-compare + .price-amount { margin-top: 6px; }
+
+/* "Custom pricing" replaces the number on the last card of each table. */
+/* Sits where the priced cards put their number, so the three cards line up:
+   .price-compare (20 margin + ~24 line) + 6 = 50 vs the default 24. */
+.price-amount-custom { align-items: baseline; margin-top: 50px; }
+.price-amount .num-custom {
+  font-family: var(--font-display); font-weight: 700; font-size: 32px;
+  line-height: 1.1; letter-spacing: -0.6px; color: var(--ink);
+}
+.price-card.featured .price-amount .num-custom { color: var(--on-dark); }
+
+/* Small print under the price: annual total, saving, timeline. */
+.price-note {
+  font-size: 13px; line-height: 1.45; color: var(--muted);
+  margin: -12px 0 20px; min-height: 38px;
+}
+.price-card.featured .price-note { color: var(--on-dark-soft); }
+
 /* ---------- Domain table ---------- */
 .domain-table { width: 100%; border-collapse: collapse; }
 .domain-table th, .domain-table td { text-align: left; padding: 18px 16px; border-bottom: 1px solid var(--hairline); }

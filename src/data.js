@@ -285,28 +285,299 @@ export const capabilities = [
   { title: 'Booking Systems', body: 'Appointments, reservations and payments — seamless for you and your clients.', image: img.booking },
 ]
 
-// Hosting pricing plans.
+// ============================================================
+// PRICING
+// ------------------------------------------------------------
+// Hosting is recurring (monthly, or annual billed as one total
+// with 20% off). Everything else is a fixed one-off project fee.
+//
+// `ukPrice` is the typical UK agency rate for the same scope, used
+// as the struck-through comparison. Our price is exactly 20% under
+// it — we are a newer studio and price to win the work.
+// Benchmarks (Sept 2026): brochure sites £1.5k–£3.5k regional
+// agency, ecommerce £3k–£15k, simple apps £8k–£30k, small-business
+// AI chatbots £1.5k–£12k.
+// ============================================================
+
+// Annual billing discount, applied across every recurring plan.
+export const ANNUAL_DISCOUNT = 0.2
+
+// Hosting — recurring. Basic is the anchor at £8/mo.
 export const hostingPlans = [
   {
-    name: 'Starter',
-    price: 3.99,
-    tagline: 'Perfect for personal websites and small projects getting started online.',
+    name: 'Basic',
+    price: 8,
+    tagline: 'One brochure site, fully managed — hosting, SSL, backups and updates handled.',
     featured: false,
-    features: ['1 Website', '10 GB SSD Storage', '100 GB Bandwidth', 'Free SSL Certificate', '1 Email Account', 'Daily Backups', 'cPanel Access', 'Free Website Migration'],
+    features: [
+      '1 Website',
+      '20 GB SSD Storage',
+      '100 GB Bandwidth / mo',
+      'Free SSL Certificate',
+      '5 Email Accounts',
+      'Daily Backups (30-day retention)',
+      'Free Domain for Year One',
+      'WordPress & Plugin Updates',
+      '99.9% Uptime SLA',
+      'Email Support',
+    ],
   },
   {
     name: 'Business',
-    price: 9.99,
-    tagline: 'Ideal for growing businesses that need more resources and priority support.',
+    price: 18,
+    tagline: 'For growing sites that need more room, faster servers and a quicker response.',
     featured: true,
-    features: ['5 Websites', '50 GB SSD Storage', 'Unlimited Bandwidth', 'Free SSL Certificate', '10 Email Accounts', 'Daily Backups', 'cPanel Access', 'Free Website Migration', 'Priority Support'],
+    features: [
+      'Up to 5 Websites',
+      '80 GB NVMe Storage',
+      'Unlimited Bandwidth',
+      'Free SSL Certificates',
+      '25 Email Accounts',
+      'Daily Backups (90-day retention)',
+      'Free Domain for Year One',
+      'WordPress & Plugin Updates',
+      'Staging Site Included',
+      'Global CDN + Caching',
+      'Monthly Uptime & Speed Report',
+      'Priority Support (4-hour response)',
+    ],
   },
   {
     name: 'Enterprise',
-    price: 24.99,
-    tagline: 'Maximum power and resources for high-traffic websites and demanding applications.',
+    price: 38,
+    tagline: 'Built for online stores — checkout uptime, PCI-ready infrastructure and traffic headroom.',
     featured: false,
-    features: ['Unlimited Websites', '200 GB SSD Storage', 'Unlimited Bandwidth', 'Free SSL Certificate', 'Unlimited Email', 'Daily Backups', 'cPanel Access', 'Free Website Migration', 'Priority Support', 'Dedicated IP'],
+    features: [
+      'Unlimited Websites',
+      '200 GB NVMe Storage',
+      'Unlimited Bandwidth',
+      'Free SSL Certificates',
+      'Unlimited Email Accounts',
+      'Hourly Backups (12-month retention)',
+      'Free Domain for Year One',
+      'WooCommerce / Shopify Optimised',
+      'PCI-Ready Hosting Environment',
+      'Staging + Dedicated IP',
+      'Global CDN + Object Caching',
+      'Checkout & Payment Monitoring',
+      'Peak-Traffic Scaling (sales & campaigns)',
+      'Priority Support (1-hour response)',
+    ],
+  },
+]
+
+// Website development — one-off project fee, not monthly.
+export const webDevPlans = [
+  {
+    name: 'Launch',
+    price: 1400,
+    ukPrice: 1750,
+    tagline: 'A sharp 5-page site that makes a small business look established from day one.',
+    featured: false,
+    timeline: '2–3 weeks',
+    features: [
+      'Up to 5 Pages',
+      'Custom Design (no off-the-shelf template)',
+      'Mobile & Tablet Optimised',
+      'Contact & Enquiry Forms',
+      'Google Business & Maps Setup',
+      'Basic On-Page SEO',
+      'Speed & Core Web Vitals Pass',
+      'Google Analytics + Search Console',
+      '2 Rounds of Revisions',
+      '30 Days Post-Launch Support',
+    ],
+  },
+  {
+    name: 'Growth',
+    price: 2800,
+    ukPrice: 3500,
+    tagline: 'A bigger, content-managed site for businesses selling more than one thing.',
+    featured: true,
+    timeline: '4–6 weeks',
+    features: [
+      'Up to 15 Pages',
+      'Custom Design + Brand Styling',
+      'CMS — Edit Everything Yourself',
+      'Booking or Quote System',
+      'Blog / News Section',
+      'Gallery & Portfolio Modules',
+      'Advanced On-Page SEO',
+      'Schema Markup & Sitemap',
+      'Copywriting for Key Pages',
+      'Speed & Core Web Vitals Pass',
+      '3 Rounds of Revisions',
+      '90 Days Post-Launch Support',
+    ],
+  },
+  {
+    name: 'Ecommerce & Bespoke',
+    price: null,
+    ukPrice: null,
+    tagline: 'Online stores, portals, membership sites and anything that needs building from scratch.',
+    featured: false,
+    timeline: 'timeline agreed at scoping',
+    features: [
+      'WooCommerce or Shopify Build',
+      'Unlimited Products & Categories',
+      'Payments, Shipping & Tax Setup',
+      'Customer Accounts & Order Tracking',
+      'Stock / Inventory Sync',
+      'Custom Portals & Integrations',
+      'Multi-Language or Multi-Currency',
+      'Migration From Your Current Store',
+      'Dedicated Project Manager',
+      'Training for Your Team',
+    ],
+  },
+]
+
+// App development — one-off project fee.
+export const appDevPlans = [
+  {
+    name: 'App Launch',
+    price: 7200,
+    ukPrice: 9000,
+    tagline: 'One cross-platform app that does one job properly — on iOS and Android.',
+    featured: false,
+    timeline: '6–8 weeks',
+    features: [
+      'iOS + Android (single codebase)',
+      'Up to 8 Screens',
+      'Custom UI Matched to Your Brand',
+      'Push Notifications',
+      'Contact / Booking Flow',
+      'App Store & Play Store Submission',
+      'Crash & Usage Analytics',
+      '2 Rounds of Revisions',
+      '30 Days Post-Launch Support',
+    ],
+  },
+  {
+    name: 'App Growth',
+    price: 14400,
+    ukPrice: 18000,
+    tagline: 'A full product with accounts, payments and a back office you control.',
+    featured: true,
+    timeline: '10–14 weeks',
+    features: [
+      'iOS + Android (single codebase)',
+      'Unlimited Screens',
+      'User Accounts & Secure Login',
+      'In-App Payments & Subscriptions',
+      'Ordering, Booking or Loyalty Module',
+      'Admin Dashboard & Back Office',
+      'Website / CRM Integration',
+      'Push & In-App Messaging',
+      'Store Submission + ASO Setup',
+      '3 Rounds of Revisions',
+      '90 Days Post-Launch Support',
+    ],
+  },
+  {
+    name: 'Custom Platform',
+    price: null,
+    ukPrice: null,
+    tagline: 'Multi-role platforms, live tracking, offline sync and anything regulated.',
+    featured: false,
+    timeline: 'timeline agreed at scoping',
+    features: [
+      'Native iOS and Android Where Needed',
+      'Multi-Role & Multi-Tenant Apps',
+      'Live Tracking & Real-Time Data',
+      'Offline Mode & Background Sync',
+      'Third-Party & Hardware Integrations',
+      'Security & Compliance Review',
+      'Dedicated Project Manager',
+      'Ongoing Release Management',
+    ],
+  },
+]
+
+// AI chatbot — one-off build fee; running costs quoted separately.
+export const chatbotPlans = [
+  {
+    name: 'Assist',
+    price: 2000,
+    ukPrice: 2500,
+    tagline: 'Answers your most-asked questions on your site, day and night.',
+    featured: false,
+    timeline: '2–3 weeks',
+    features: [
+      'Trained on Your Website & FAQs',
+      'Website Chat Widget',
+      'Lead Capture to Email',
+      'Opening Hours & Location Answers',
+      'Brand Voice & Tone Setup',
+      'Conversation Transcripts',
+      'Handover to a Human',
+      '30 Days Tuning After Launch',
+    ],
+  },
+  {
+    name: 'Convert',
+    price: 4800,
+    ukPrice: 6000,
+    tagline: 'Books appointments, qualifies leads and answers in your customers’ languages.',
+    featured: true,
+    timeline: '4–6 weeks',
+    features: [
+      'Everything in Assist',
+      'Trained on Your Documents & Menus',
+      'Booking & Appointment Taking',
+      'Lead Qualification & Routing',
+      'WhatsApp + Facebook Messenger',
+      'Multilingual Replies',
+      'CRM / Email Marketing Sync',
+      'Analytics & Intent Reporting',
+      '90 Days Tuning After Launch',
+    ],
+  },
+  {
+    name: 'Custom AI',
+    price: null,
+    ukPrice: null,
+    tagline: 'Deeper automation wired into the systems your business already runs on.',
+    featured: false,
+    timeline: 'timeline agreed at scoping',
+    features: [
+      'Custom Model & Knowledge Pipeline',
+      'Order, Stock or Booking System Access',
+      'Voice & Phone Answering',
+      'Internal Staff Assistant',
+      'Workflow Automation',
+      'Data Handling & GDPR Review',
+      'Dedicated Project Manager',
+      'Ongoing Training & Monitoring',
+    ],
+  },
+]
+
+// The three one-off pricing tables rendered under hosting on /pricing.
+export const projectPricing = [
+  {
+    id: 'website-development',
+    eyebrow: 'Website development',
+    title: 'Fixed-price websites.',
+    lead: 'One price, agreed before we start. No day rates, no scope creep, no surprise invoice at the end.',
+    plans: webDevPlans,
+    serviceTo: '/services/web-development',
+  },
+  {
+    id: 'app-development',
+    eyebrow: 'App development',
+    title: 'iOS and Android, fixed price.',
+    lead: 'Cross-platform builds keep the cost down without splitting your users across two separate products.',
+    plans: appDevPlans,
+    serviceTo: '/services/app-development',
+  },
+  {
+    id: 'ai-chatbot',
+    eyebrow: 'AI chatbot',
+    title: 'An assistant that never clocks off.',
+    lead: 'Build fee below. Running costs depend on how much it gets used — we quote that honestly up front.',
+    plans: chatbotPlans,
+    serviceTo: '/services/ai-chatbot',
   },
 ]
 
@@ -737,45 +1008,55 @@ export const projects = [
 ]
 
 // The three projects featured on the home page.
-const featuredSlugs = ['istanbul-restaurant-birmingham', 'pmm-awards', 'buynow-uk']
+const featuredSlugs = ['istanbul-restaurant-birmingham', 'csfm-cleaning', 'arif-lohar-jugni-king']
 export const featuredWork = featuredSlugs.map((s) => projects.find((p) => p.slug === s))
 
+// Client feedback. Each one maps to a live project in `projects` above, so the
+// quote, the case study and the screenshot all refer to the same piece of work.
+// Attributed to the business and role — confirm wording with each client
+// before publishing.
 export const testimonials = [
   {
-    quote: 'Jazba Host transformed our online presence completely. The new website they built has increased our leads by 40% in just three months. Their team understood our brand perfectly and delivered beyond our expectations.',
-    name: 'Sarah Mitchell',
-    role: 'Founder, Bloom & Co.',
-    location: 'London, UK',
-  },
-  {
-    quote: 'We needed a complex web application with real-time features, and Jazba Host delivered it on time and within budget. Their technical expertise is outstanding, and their communication throughout the project was excellent.',
-    name: 'James Patel',
-    role: 'Director, TechBridge Solutions',
+    quote: 'We wanted people to see the food and find the phone number straight away, and that is exactly what we got. The menu is easy for us to change ourselves, and the table bookings come through without us chasing anyone.',
+    name: 'Istanbul Restaurant',
+    role: 'Owner',
     location: 'Birmingham, UK',
+    slug: 'istanbul-restaurant-birmingham',
   },
   {
-    quote: 'The eCommerce store Jazba Host built for us is beautiful and incredibly fast. Our conversion rate has doubled since the launch. They also set up our hosting and email, making everything seamless.',
-    name: 'Emily Richardson',
-    role: 'Marketing Manager, PureSkin',
-    location: 'Manchester, UK',
+    quote: 'We were being compared to much bigger facilities companies. The site made us look the part without pretending to be something we are not, and the Schedule A Service button is on every page, which is where most of our enquiries now start.',
+    name: 'CSFM Cleaning',
+    role: 'Management',
+    location: 'Birmingham, UK',
+    slug: 'csfm-cleaning',
   },
   {
-    quote: "Jazba Host's AI chatbot has revolutionised our customer support. Response times dropped from hours to seconds, and our customer satisfaction scores have never been higher. Highly recommend their AI services.",
-    name: 'Ahmed Khan',
-    role: 'CEO, DigiVenture',
-    location: 'Islamabad, Pakistan',
+    quote: 'Everything was spread across social media before — the music, the awards, the tour dates. Now there is one official site to send fans, promoters and press to, and it looks the way the shows feel.',
+    name: 'Arif Lohar',
+    role: 'Management, Jazba Entertainment Ltd.',
+    location: 'UK & Worldwide',
+    slug: 'arif-lohar-jugni-king',
   },
   {
-    quote: 'From the initial consultation to the final launch, working with Jazba Host was an absolute pleasure. They took the time to understand our small business needs and delivered a website that truly represents our brand.',
-    name: 'Claire Thompson',
-    role: 'Owner, The Artisan Bakery',
-    location: 'Edinburgh, UK',
+    quote: 'Voting night is the real test. Traffic goes from nothing to thousands the moment nominations go live, and the site has held up through it. Tickets and votes sit side by side, which is how we wanted it.',
+    name: 'Pakistani Music & Media Awards',
+    role: 'Event Team',
+    location: 'Symphony Hall, Birmingham',
+    slug: 'pmm-awards',
   },
   {
-    quote: 'We hired Jazba Host to build our customer-facing dashboard, and the result is phenomenal. Clean code, intuitive UX, and rock-solid performance. They are now our go-to development partner.',
-    name: 'David Okonkwo',
-    role: 'CTO, FinServe Analytics',
-    location: 'London, UK',
+    quote: 'People come to us at difficult moments, so the site had to feel calm. Putting the fees and the referral form in the menu means nobody has to hunt for them — individuals or the agencies referring to us.',
+    name: 'Between You and Me SEVA',
+    role: 'Counselling Team',
+    location: 'United Kingdom',
+    slug: 'between-you-and-me-seva',
+  },
+  {
+    quote: 'The booking button follows you down the page, which was the whole point. Packages got their own place in the menu instead of being buried, and the FAQs have taken a good chunk of the repeat calls off us.',
+    name: 'Bab Alzahia Cleaning Services',
+    role: 'Owner',
+    location: 'Ajman, UAE',
+    slug: 'bab-alzahia-cleaning',
   },
 ]
 

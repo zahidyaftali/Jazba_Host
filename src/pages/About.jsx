@@ -4,6 +4,7 @@ import './pages.css'
 import { img } from '../data.js'
 import { pageTransition, fadeUp, stagger, scaleIn } from '../components/motion.js'
 import Reveal from '../components/Reveal.jsx'
+import Seo from '../components/Seo.jsx'
 import { SectionHead, CtaBand, StatStrip, Eyebrow, PageHero } from '../components/Shared.jsx'
 
 const values = [
@@ -16,6 +17,7 @@ const values = [
 export default function About() {
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
+      <Seo page="about" />
       {/* HERO — orange mesh opener */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / About</>}

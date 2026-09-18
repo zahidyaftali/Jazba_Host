@@ -5,6 +5,7 @@ import './pages.css'
 import { offices, services } from '../data.js'
 import { pageTransition, fadeUp, stagger, scaleIn } from '../components/motion.js'
 import Reveal from '../components/Reveal.jsx'
+import Seo from '../components/Seo.jsx'
 import { SectionHead, PageHero } from '../components/Shared.jsx'
 
 const quickContacts = [
@@ -37,6 +38,7 @@ export default function Contact() {
 
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
+      <Seo page="contact" />
       {/* HERO — orange mesh opener */}
       <PageHero
         crumbs={<><Link to="/">Home</Link> / Contact</>}

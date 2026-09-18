@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './pages.css'
 import { pageTransition } from '../components/motion.js'
+import Seo from '../components/Seo.jsx'
 
 export default function NotFound() {
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
+      <Seo page="notFound" />
       <section className="notfound container">
         <div>
           <div className="code">404</div>

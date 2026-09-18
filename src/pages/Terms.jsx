@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import './pages.css'
 import { pageTransition } from '../components/motion.js'
 import Reveal from '../components/Reveal.jsx'
+import Seo from '../components/Seo.jsx'
 import { PageHero } from '../components/Shared.jsx'
 
 const sections = [
@@ -80,6 +81,7 @@ const sections = [
 export default function Terms() {
   return (
     <motion.div variants={pageTransition} initial="initial" animate="animate" exit="exit">
+      <Seo page="terms" />
       <PageHero
         crumbs={<><Link to="/">Home</Link> / Terms of Use</>}
         eyebrow="Legal"
